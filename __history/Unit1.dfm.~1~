@@ -1,7 +1,7 @@
 object Main: TMain
-  Left = 0
+  Left = 97
   Top = 0
-  Width = 1178
+  Width = 1060
   Height = 716
   HorzScrollBar.ButtonSize = 3
   HorzScrollBar.ParentColor = False
