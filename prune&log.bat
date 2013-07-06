@@ -1,0 +1,1 @@
+prune.bat > prunelog.txt

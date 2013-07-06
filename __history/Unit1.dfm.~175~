@@ -1,7 +1,7 @@
 object Main: TMain
-  Left = 97
+  Left = 0
   Top = 0
-  Width = 1200
+  Width = 1178
   Height = 716
   HorzScrollBar.ButtonSize = 3
   HorzScrollBar.ParentColor = False
@@ -563,7 +563,8 @@ object Main: TMain
     Items.Strings = (
       'Chat'
       'Whisper'
-      'Emote')
+      'Emote'
+      'Guild')
   end
   object ComboAction: TsComboBox
     Left = 656
