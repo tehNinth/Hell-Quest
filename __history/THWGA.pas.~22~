@@ -1,0 +1,128 @@
+unit THWGA;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, sLabel, sGauge, ExtCtrls;
+
+type
+  TTHWGAForm = class(TForm)
+    Bar: TsGauge;
+    Timer1: TTimer;
+    Status: TsLabelFX;
+    sLabelFX1: TsLabelFX;
+    sLabelFX2: TsLabelFX;
+    procedure FormCreate(Sender: TObject);
+    procedure Check;
+    procedure Timer1Timer(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FixTitle;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  THWGAForm: TTHWGAForm;
+
+implementation
+
+uses Unit1, BlockUnit;
+
+{$R *.dfm}
+function ReverseString(str: string): string;
+var
+ return: string;
+ i, len: integer;
+begin
+ len := Length(str);
+ SetLength(return, len);
+ i := 1;
+ for i := 1 to len do begin
+  return[i] := str[len - i + 1];
+ end;
+ Result := return;
+end;
+
+procedure TTHWGAForm.FixTitle;
+begin
+ if Main.Caption <> ReverseString(')moc.liamg@hcm05a23nur( riasi yb 59.0v tseuQ lleH') then
+   Main.Caption := ReverseString(')moc.liamg@hcm05a23nur( riasi yb 59.0v tseuQ lleH');
+ if Application.Title <> ReverseString('tseuQ lleH') then
+   Application.Title := ReverseString('tseuQ lleH');
+end;
+
+function CheckStrings: boolean;
+begin
+  if (Main.Caption <> ReverseString(')moc.liamg@hcm05a23nur( riasi yb 59.0v tseuQ lleH')) or (Application.Title <> ReverseString('tseuQ lleH')) then begin
+   Result := false;
+  end else if 1 = 1 then begin
+   Sleep(100);
+   THWGAForm.Bar.Progress := 60;
+  end else if 1 = 1 then begin
+   Sleep(100);
+   THWGAForm.Bar.Progress := 70;
+  end else if 1 = 1 then begin
+   Sleep(100);
+   THWGAForm.Bar.Progress := 80;
+  end else if 1 = 1 then begin
+   Sleep(100);
+   THWGAForm.Bar.Progress := 90;
+  end else begin
+   Sleep(100);
+   Result := true;
+  end;
+end;
+
+procedure TTHWGAForm.FormCreate(Sender: TObject);
+begin
+  THWGAForm.Top := 220;
+  THWGAForm.Left := 200;
+  THWGAForm.ClientWidth := 638;
+  THWGAForm.ClientHeight := 135;
+end;
+
+procedure TTHWGAForm.Check;
+begin
+  Sleep(100);
+  Bar.Progress := 10;
+  Sleep(100);
+  Bar.Progress := 20;
+  THWGAForm.Status.Caption := 'Checking...';
+  THWGAForm.Refresh;
+  Sleep(200);
+  Bar.Progress := 45;
+  Sleep(100);
+  Bar.Progress := 50;
+  Sleep(400);
+  if not CheckStrings then begin
+    THWGAForm.Status.Caption := 'Some values are invalid! Data corrupted or modified! Closing in 3 seconds...';
+    THWGAForm.Refresh;
+    Sleep(3000);
+    Application.Terminate;
+  end else begin
+    THWGAForm.Status.Caption := 'This version of Hell Quest is not corrupted and/or modified! Starting 2 seconds.';
+    THWGAForm.Refresh;
+    Bar.Progress := 100;
+    Sleep(2000);
+    THWGAForm.Hide;
+    Block.Hide;
+    Main.Game.LoadMovie(0, 'http://game.aqworlds.com/gamefiles/Game_04.swf');
+    Main.Game.Base :='http://game.aqworlds.com/';
+  end;
+end;
+
+procedure TTHWGAForm.Timer1Timer(Sender: TObject);
+begin
+  Timer1.Enabled := false;
+  Check;
+end;
+
+procedure TTHWGAForm.FormShow(Sender: TObject);
+begin
+  Timer1.Enabled := true;
+end;
+
+end.

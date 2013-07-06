@@ -1,0 +1,47 @@
+unit SWFMenu;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ExtCtrls, sPanel, StdCtrls, sButton, sEdit, sLabel;
+
+type
+  TSWFMenuForm = class(TForm)
+    sLabelFX1: TsLabelFX;
+    sEdit1: TsEdit;
+    sButton1: TsButton;
+    sButton2: TsButton;
+    sButton3: TsButton;
+    sLabelFX2: TsLabelFX;
+    sPanel1: TsPanel;
+    sLabelFX3: TsLabelFX;
+    sEdit2: TsEdit;
+    sButton4: TsButton;
+    sLabelFX4: TsLabelFX;
+    sLabelFX5: TsLabelFX;
+    sEdit3: TsEdit;
+    sButton5: TsButton;
+    sLabelFX6: TsLabelFX;
+    sEdit4: TsEdit;
+    sLabelFX7: TsLabelFX;
+    sLabelFX8: TsLabelFX;
+    sEdit5: TsEdit;
+    sEdit6: TsEdit;
+    sLabelFX9: TsLabelFX;
+    sEdit7: TsEdit;
+    sButton6: TsButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  SWFMenuForm: TSWFMenuForm;
+
+implementation
+
+{$R *.dfm}
+
+end.

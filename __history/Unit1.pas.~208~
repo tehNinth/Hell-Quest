@@ -1,0 +1,1102 @@
+unit Unit1;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, OleCtrls, StdCtrls, Winsock, ExtCtrls,
+  ComCtrls, SHDocVw, Menus, sSkinProvider, sSkinManager, sButton, sLabel,
+  sEdit, sCheckBox, sComboBox, registry, ShellAPI, sPanel, ActiveX,
+  ShockwaveFlashObjects_TLB, sListBox;
+
+type
+  TMain = class(TForm)
+    MSLabel: TLabel;
+    SpamTimer: TTimer;
+    OpenSPT: TOpenDialog;
+    Open: TTimer;
+    WriteSPT: TSaveDialog;
+    OpenHScript: TOpenDialog;
+    MainMenu1: TMainMenu;
+    SentClear: TsButton;
+    sSkinManager1: TsSkinManager;
+    SentStop: TsButton;
+    SentStart: TsButton;
+    sLabel4: TsLabel;
+    LoadShop: TsButton;
+    ShopID: TsEdit;
+    HairID: TsEdit;
+    EnchantmentID: TsEdit;
+    LoadHair: TsButton;
+    SendList: TsListBox;
+    Name: TsEdit;
+    LoadEnchantment: TsButton;
+    AdminMenu: TsButton;
+    LoadAutoScript: TsButton;
+    ConfigureFilters: TsButton;
+    LoadSPT: TsButton;
+    SaveSPT: TsButton;
+    PMemo: TMemo;
+    slRemove: TsButton;
+    slRemoveAll: TsButton;
+    SpamToggle: TsCheckBox;
+    SendAllOnce: TsButton;
+    PlayerAction: TsButton;
+    OpenEditore: TsButton;
+    LoadHScript: TsButton;
+    UnloadHScript: TsButton;
+    SpamDelay: TsEdit;
+    SendChat: TsButton;
+    Change: TsButton;
+    AddSend: TsButton;
+    SendOnce: TsButton;
+    Legion: TsButton;
+    ComboChat: TsComboBox;
+    ComboAction: TsComboBox;
+    sSkinProvider1: TsSkinProvider;
+    ChatLine: TsEdit;
+    TextName: TsEdit;
+    TextLine: TsEdit;
+    SummonName: TsEdit;
+    toSendList: TsListBox;
+    ClanManagement1: TMenuItem;
+    Password: TsEdit;
+    PassToggle: TsButton;
+    MainTimer: TTimer;
+    DataPanel: TsPanel;
+    AutoPilot: TMenuItem;
+    AdvancedDataManagement: TMenuItem;
+    CheckForUpdates: TMenuItem;
+    sLabelFX1: TsLabelFX;
+    sLabelFX2: TsLabelFX;
+    sLabelFX3: TsLabelFX;
+    sLabelFX4: TsLabelFX;
+    DataSocket: TsLabelFX;
+    DataCharacterID: TsLabelFX;
+    DataTitle: TsLabelFX;
+    WebBrowser: TWebBrowser;
+    Connect: TMenuItem;
+    ConnecttoHellQuestServer: TMenuItem;
+    ManualConnection: TMenuItem;
+    sPanel1: TsPanel;
+    sLabel3: TsLabel;
+    sLabel6: TsLabel;
+    sLabel7: TsLabel;
+    sLabel8: TsLabel;
+    sLabel9: TsLabel;
+    sLabel10: TsLabel;
+    sLabel11: TsLabel;
+    sLabel12: TsLabel;
+    sLabel13: TsLabel;
+    sLabel14: TsLabel;
+    sLabel15: TsLabel;
+    sLabel16: TsLabel;
+    sLabel17: TsLabel;
+    sLabel18: TsLabel;
+    sLabel19: TsLabel;
+    sLabel20: TsLabel;
+    sLabel21: TsLabel;
+    sLabel22: TsLabel;
+    sLabel23: TsLabel;
+    sLabel24: TsLabel;
+    sLabel25: TsLabel;
+    DataToggle: TsButton;
+    procedure updateLists;
+    procedure UpdateSocketID(id: String; data: String);
+    procedure ExtractInfo(data: String);
+    procedure GetInfo(data: String);
+    procedure displayData(recv: Boolean; index:Integer);
+    procedure FormCreate(Sender: TObject);
+    procedure SendListClick(Sender: TObject);
+    procedure RecvListClick(Sender: TObject);
+    procedure AddSendClick(Sender: TObject);
+    procedure toSendListClick(Sender: TObject);
+    procedure slRemoveClick(Sender: TObject);
+    procedure SendOnceClick(Sender: TObject);
+    procedure LegionClick(Sender: TObject);
+    procedure SendAllOnceClick(Sender: TObject);
+    procedure SpamTimerTimer(Sender: TObject);
+    procedure SpamToggleClick(Sender: TObject);
+    procedure SpamDelayChange(Sender: TObject);
+    procedure SentClearClick(Sender: TObject);
+    procedure SentStopClick(Sender: TObject);
+    procedure SentStartClick(Sender: TObject);
+    procedure LoadSPTClick(Sender: TObject);
+    procedure LoadShopClick(Sender: TObject);
+    procedure LoadHairClick(Sender: TObject);
+    procedure LoadEnchantmentClick(Sender: TObject);
+    procedure ConfigureFiltersClick(Sender: TObject);
+    procedure SendChatClick(Sender: TObject);
+    procedure PlayerActionClick(Sender: TObject);
+    procedure OpenTimerTimer(Sender: TObject);
+    procedure LoadAutoScriptClick(Sender: TObject);
+    procedure sendPacket(data: string);
+    procedure ChangeClick(Sender: TObject);
+    procedure slRemoveAllClick(Sender: TObject);
+    procedure AdminMenuClick(Sender: TObject);
+    procedure SaveSPTClick(Sender: TObject);
+    procedure OpenEditorClick(Sender: TObject);
+    procedure ComboActionChange(Sender: TObject);
+    procedure ComboChatChange(Sender: TObject);
+    procedure LoadHScriptClick(Sender: TObject);
+    procedure UnloadHScriptClick(Sender: TObject);
+    procedure LoadScript(fname: string);
+    procedure UnloadScript;
+    procedure PassToggleClick(Sender: TObject);
+    procedure ClanManagement1Click(Sender: TObject);
+    procedure MainTimerTimer(Sender: TObject);
+    procedure DataToggleClick(Sender: TObject);
+    procedure StartAutoPilotClick(Sender: TObject);
+    procedure AutoPilotClick(Sender: TObject);
+    procedure CheckForUpdatesClick(Sender: TObject);
+    procedure AdvancedDataManagementClick(Sender: TObject);
+    procedure GameFSCommand(ASender: TObject; const command, args: WideString);
+    procedure ManualConnectionClick(Sender: TObject);
+    procedure ConnecttoHellQuestServerClick(Sender: TObject);
+    procedure C1Click(Sender: TObject);
+    procedure ShopIDKeyPress(Sender: TObject; var Key: Char);
+    procedure HairIDKeyPress(Sender: TObject; var Key: Char);
+    //Yeah, I know. Tons of useless stuff.
+  private
+    FOleInPlaceActiveObject: IOleInPlaceActiveObject;
+    procedure MessageHandler(var Msg: TMsg; var Handled: Boolean);
+  public
+    { Public declarations }
+  end;
+
+var
+  Main: TMain;
+  realSend, realRecv: Pointer;
+  typeStrings, dataStrings, sockStrings, slData, slSock, scriptLine: TStringList;
+  captureSent, preventLoop, scriptRunning, showPassword: Boolean;
+  spamIndex, clientSocket: Integer;
+  pid, written, old: Cardinal;
+  ptr: ^string;
+  testString, modString, zone, act, chat, gameSocket, characterName, characterPassword, characterID: String;
+  addr: DWORD;
+
+  currentMap, level, gold: String;
+
+implementation
+
+uses Unit2, Unit3, Unit4, THWGA, BlockUnit, Clan, AutoPilot, Update,
+  DataManager, SWFMenu;
+
+{$R *.dfm}
+
+function ReverseString(str: string): string;
+var
+ return: string;
+ i, len: integer;
+begin
+ len := Length(str);
+ SetLength(return, len);
+ i := 1;
+ for i := 1 to len do begin
+  return[i] := str[len - i + 1];
+ end;
+ Result := return;
+end;
+
+function unhookedSend:Integer; assembler; stdcall;
+asm
+  mov edi, edi
+  push ebp
+  mov esp, ebp
+  jmp [realSend];
+end;
+
+function unhookedRecv:Integer; assembler; stdcall;
+asm
+  mov edi, edi
+  push ebp
+  mov esp, ebp
+  jmp [realRecv];
+end;
+
+procedure TMain.updateLists;
+var
+  i, bs, br, osl, orl: Integer;
+begin
+  bs := SendList.ItemIndex;
+  osl := SendList.Count;
+  SendList.Clear;
+  for i := dataStrings.Count - 1 downto 0 do begin
+    if typeStrings.Strings[i] = 'Sent' then begin
+      if (dataStrings.Strings[i] <> '!') then SendList.Items.Add(dataStrings[i]);
+    end;
+  end;
+  if (osl < SendList.Count) AND (bs >= 0) then begin
+    SendList.ItemIndex := bs + (SendList.Count - osl);
+  end else begin
+    SendList.ItemIndex := bs;
+  end;
+end;
+
+procedure TMain.displayData(recv: Boolean; index:Integer);
+var
+  i, c: Integer;
+begin
+  c := -1;
+  for i := typeStrings.Count - 1 downto 0 do begin
+    if (typeStrings.Strings[i] = 'Sent') AND (NOT recv) then begin
+      c := c + 1;
+    end else if (typeStrings.Strings[i] = 'Recieved') AND (recv) then begin
+      c := c + 1;
+    end;
+    if c = index then begin
+      PMemo.Text := dataStrings.Strings[i];
+      break;
+    end;
+  end;
+end;
+
+procedure hook(tFunc, nFunc:Pointer);
+var
+  jmpTo: DWord;
+  oldProtect: Cardinal;
+begin
+  jmpTo := DWord(nFunc) - DWord(tFunc) - 5;
+  VirtualProtect(tFunc, 5, PAGE_EXECUTE_READWRITE, @oldProtect);
+  pbyte(tFunc)^ := $e9;
+  pdword(DWord(tFunc)+1)^ := jmpTo;
+end;
+
+function FilterData(data: string): string;
+var
+ i, t, j, offset, firstLength: Integer;
+ found: Boolean;
+ originalData, newData, before, after: String;
+begin
+  i := 0;
+  found := false;
+  firstLength := Length(data);
+  while (i < Unit2.iFilterName.Count) and (found = false) do begin
+   if Unit2.iFilterEnabled.Strings[i] = 'true' then begin
+     originalData := Unit2.iFilterOriginal.Strings[i];
+     t := AnsiPos(originalData, data);
+     if t <> 0 then begin
+       found := true;
+       newData := Unit2.iFilterReplacement.Strings[i];
+       offset := t - 1;
+       before := '';
+       if offset <> 0 then before := Copy(data, 1, offset);
+       after := Copy(data, t + Length(originalData), Length(data) - offset);
+       data := before + newData + after;
+       //while t <= (offset + Length(newData)) do begin
+       //  data[t] := newData[t - offset];
+       //  t := t + 1;
+       //end;
+       if Length(data) < firstLength then begin
+         j := firstLength - Length(data);
+         while j > 0 do begin
+           data := data + ' ';
+           j := j - 1;
+         end;
+       end;
+       Result := data;
+     end;
+   end;
+   i := i + 1;
+  end;
+  if found = false then Result := data;
+end;
+
+function hookSend(s:Integer; buf:PAnsiChar; len:Integer; flags:Integer):Integer; stdcall;
+var
+  newLen: integer;
+begin
+  try
+    testString := PAnsiChar(@buf^);
+  finally
+    modString := FilterData(testString);
+    newLen := Length(modString) + 1;
+    if testString <> modString then begin
+      //VirtualProtect(buf, newLen, PAGE_EXECUTE_READWRITE, @old);
+      //CopyMemory(buf, @modString[1], newLen);
+      //VirtualProtect(@len, 4, PAGE_EXECUTE_READWRITE, @old);
+      //CopyMemory(@len, @newLen, 4);
+      pid := OpenProcess(PROCESS_ALL_ACCESS, false, GetCurrentProcessId);
+      WriteProcessMemory(pid, @buf, @modString, 4, written);
+      WriteProcessMemory(pid, @len, @newLen, 4, written);
+    end;
+    Main.UpdateSocketID(IntToStr(s), modString);
+    Main.GetInfo(modString);
+    if captureSent and (modString <> '!') then begin
+      typeStrings.Add('Sent');
+      dataStrings.Add(modString);
+      sockStrings.Add(IntToStr(s));
+      Main.updateLists;
+    end;
+    Result := unhookedSend;
+  end;
+end;
+
+function hookRecv(s:Integer; buf: PAnsiChar; len:Integer; flags:Integer):Integer; stdcall;
+var
+  oldString, newString, dummyString: String;
+  newLen, dummyLen: integer;
+  valueAddr, lengthAddr: DWORD;
+begin
+  try
+    oldString := PAnsiChar(@buf^);
+    //if Main.RecvToggle.Checked then begin
+      //typeStrings.Add('Recieved');
+      //dataStrings.Add(PAnsiChar(@buf^));
+      //sockStrings.Add(IntToStr(s));
+      //Main.updateLists;
+      Main.ExtractInfo(oldString);
+    //end;
+    newString := FilterData(oldString);
+    newLen := Length(newString) + 1;
+    //if oldString <> newString then begin
+      //pid := OpenProcess(PROCESS_ALL_ACCESS, false, GetCurrentProcessId);
+
+      //VirtualProtect(@buf, 4, PAGE_EXECUTE_READWRITE, @old);
+      //VirtualProtect(newString, newLen - 1, PAGE_EXECUTE_READWRITE, @old);
+      //CopyMemory(@buf, @newString, 4);
+      ///VirtualProtect(@buf, 4, PAGE_READONLY, @old);
+      //VirtualProtect(newString, newLen - 1, PAGE_READONLY, @old);
+      //VirtualProtect(@len, 4, PAGE_EXECUTE_READWRITE, @old);
+      //CopyMemory(@len, @newLen, 4);
+      //VirtualProtect(@len, 4, PAGE_READONLY, @old);
+
+      //WriteProcessMemory(pid, @buf, @newString, 4, written);
+      //WriteProcessMemory(pid, @len, @newLen, 4, written);
+    //end;
+  finally
+    Result := unhookedRecv;
+
+    //OMG experimentational commented out codes everywhere!!!?!?! ZOMG ZOMG
+  end;
+end;
+
+procedure TMain.MessageHandler(var Msg: TMsg; var Handled: Boolean);
+///////////////////////////////////////////////////////////////////////////////////////////
+// This fixes the backspace problem people have in trainers using TWebBrowser component. //
+// Ever wondered why my trainer didn't have that problem? :)                             //
+///////////////////////////////////////////////////////////////////////////////////////////
+var
+  iOIPAO: IOleInPlaceActiveObject;
+  Dispatch: IDispatch;
+begin
+  if (WebBrowser = nil) then
+  begin
+    Handled := false;
+    exit;
+  end;
+
+  Handled := (IsDialogMessage(WebBrowser.Handle, Msg) = True);
+
+  if (Handled) and (not WebBrowser.Busy) then
+  begin
+    if FOleInPlaceActiveObject = nil then
+    begin
+      Dispatch := WebBrowser.Application;
+      if Dispatch <> nil then
+      begin
+        Dispatch.QueryInterface(IOleInPlaceActiveObject, iOIPAO);
+        if iOIPAO <> nil then FOleInPlaceActiveObject := iOIPAO;
+      end;
+    end;
+    if FOleInPlaceActiveObject <> nil then
+    begin
+      if ((Msg.message = WM_KEYDOWN) or (Msg.message = WM_KEYUP)) and ((Msg.wParam = VK_BACK) or (Msg.wParam = VK_LEFT) or (Msg.wParam = VK_RIGHT) or (Msg.wParam = VK_RETURN)) then begin
+        if Msg.wParam = VK_RETURN then begin
+         TranslateMessage(Msg);
+         DispatchMessage(Msg);
+        end;
+      end else
+         FOleInPlaceActiveObject.TranslateAccelerator(Msg);
+    end;
+  end;
+
+  if ((Msg.message = WM_KEYDOWN) or (Msg.message = WM_KEYUP)) and (Msg.wParam = VK_RETURN) then begin
+    if (SendChat.Focused) then
+      SendChat.Click;
+  end;
+end;
+
+procedure TMain.FormCreate(Sender: TObject);
+begin
+  Application.OnMessage := MessageHandler;
+  Main.Top := 0;
+  Main.Left := 0;
+  Main.Width := 1170;
+  Main.Height := 714;
+  currentMap := '';
+  zone := 'zm';
+  act := 'summon';
+  chat := 'chat';
+  characterName := 'N/A';
+  characterPassword := 'N/A';
+  preventLoop := false;
+  showPassword := false;
+  scriptLine := TStringList.Create;
+  typeStrings := TStringList.Create;
+  dataStrings := TStringList.Create;
+  sockStrings := TStringList.Create;
+  slData := TStringList.Create;
+  slSock := TStringList.Create;
+  realSend := Pointer(DWord(GetProcAddress(GetModuleHandle('ws2_32.dll'), 'send')) + 5);
+  hook(GetProcAddress(GetModuleHandle('ws2_32.dll'), 'send'), @hookSend);
+  realRecv := Pointer(DWord(GetProcAddress(GetModuleHandle('ws2_32.dll'), 'recv')) + 5);
+  hook(GetProcAddress(GetModuleHandle('ws2_32.dll'), 'recv'), @hookRecv);
+  SendList.DoubleBuffered := True;
+  DoubleBuffered := True;
+  SetWindowLong(SpamDelay.Handle, GWL_STYLE, GetWindowLong(SpamDelay.Handle, GWL_STYLE) or ES_NUMBER);
+  SetWindowLong(AddSend.Handle, GWL_STYLE, GetWindowLong(AddSend.Handle, GWL_STYLE) or BS_MULTILINE);
+  SetWindowLong(SendOnce.Handle, GWL_STYLE, GetWindowLong(SendOnce.Handle, GWL_STYLE) or BS_MULTILINE);
+  WebBrowser.Navigate('http://aqworldscdn.aq.com/game/gamefiles/Loader.swf');
+end;
+
+procedure TMain.UpdateSocketID(id: String; data: String);
+begin
+  if Length(data) > 1 then begin
+    if data[1] = '%' then begin
+      clientSocket := StrToInt(id);
+      gameSocket := id;
+      DataSocket.Caption := 'Socket: ' + gameSocket;
+    end;
+  end;
+end;
+
+procedure TMain.ExtractInfo(data: String);
+var
+  i, j: Integer;
+  text: String;
+begin
+  i := AnsiPos('"lastArea":"', data);
+  if i <> 0 then begin
+    i := i + 12;
+    currentMap := '';
+    while data[i] <> '"' do begin
+      currentMap := currentMap + data[i];
+      i := i + 1;
+    end;
+  end;
+  i := AnsiPos('.swf', data);
+  if i <> 0 then begin
+    DataManagerForm.AddSWF(data, i);
+  end;
+end;
+
+procedure TMain.GameFSCommand(ASender: TObject; const command,
+  args: WideString);
+begin
+  if command = 'OpenMenu' then SWFMenuForm.Show;
+end;
+
+procedure TMain.GetInfo(data: String);
+var
+ i: Integer;
+ temp, data2: String;
+begin
+  {*i := AnsiPos('<nick><![CDATA[', data);
+  if i <> 0 then begin
+    i := i + 15;
+    characterName := '';
+    while data[i] <> ']' do begin
+     characterName := characterName + data[i];
+     i := i + 1;
+    end;
+    temp := UpperCase(characterName[1]);
+    characterName[1] := temp[1];
+    Name.Text := characterName;
+  end;*}
+  i := AnsiPos('<nick><![CDATA[', data);
+  if i <> 0 then begin
+    i := i + 15;
+    characterName := '';
+    while data[i] <> ']' do begin
+     characterName := characterName + data[i];
+     i := i + 1;
+    end;
+    temp := UpperCase(characterName[1]);
+    characterName[1] := temp[1];
+    Name.Text := characterName;
+  end;
+  i := AnsiPos('%moveToCell%', data);
+  if i <> 0 then begin
+    i := i + 12;
+    characterID := '';
+    while data[i] <> '%' do begin
+     characterID := characterID + data[i];
+     i := i + 1;
+    end;
+    DataCharacterID.Caption := 'Character ID: ' + characterID;
+  end;
+  i := AnsiPos('strPassword=', data);
+  if i <> 0 then begin
+    i := i + 12;
+    characterPassword := '';
+    data2 := data + ' n';
+    while (data[i] <> '&') and (i <= length(data)) do begin
+     characterPassword := characterPassword + data2[i];
+     i := i + 1;
+    end;
+    Password.Text := characterPassword;
+  end;
+end;
+
+procedure TMain.HairIDKeyPress(Sender: TObject; var Key: Char);
+begin
+if Key = #13 then //#13 = enter
+begin
+//----- Add Method Call in here -----
+//just a line to prove it works
+LoadHairClick(Sender);
+end;
+end;
+
+procedure TMain.SendListClick(Sender: TObject);
+begin
+  displayData(False, SendList.ItemIndex);
+end;
+
+procedure TMain.RecvListClick(Sender: TObject);
+begin
+  SendList.ItemIndex := -1;
+end;
+
+procedure TMain.AddSendClick(Sender: TObject);
+begin
+  slData.Add(PMemo.Text);
+  slSock.Add(gameSocket);
+  toSendList.Items.Add(PMemo.Text);
+end;
+
+procedure TMain.toSendListClick(Sender: TObject);
+begin
+  PMemo.Text := slData.Strings[toSendList.ItemIndex];
+  gameSocket := slSock.Strings[toSendList.ItemIndex];
+end;
+
+procedure TMain.slRemoveClick(Sender: TObject);
+begin
+  if toSendList.ItemIndex >= 0 then begin
+    slData.Delete(toSendList.ItemIndex);
+    slSock.Delete(toSendList.ItemIndex);
+    toSendList.Items.Delete(toSendList.ItemIndex);
+  end;
+end;
+
+procedure TMain.SendOnceClick(Sender: TObject);
+var
+  packetData: String;
+begin
+  packetData := PMemo.Text;
+  sendPacket(packetData);
+end;
+
+procedure BrowseURL(const URL: string);
+var
+   Browser: string;
+begin
+   Browser := '';
+   with TRegistry.Create do
+   try
+     RootKey := HKEY_CLASSES_ROOT;
+     Access := KEY_QUERY_VALUE;
+     if OpenKey('\htmlfile\shell\open\command', False) then
+       Browser := ReadString('') ;
+     CloseKey;
+   finally
+     Free;
+   end;
+   if Browser = '' then begin
+     Exit;
+   end;
+   Browser := Copy(Browser, Pos('"', Browser) + 1, Length(Browser)) ;
+   Browser := Copy(Browser, 1, Pos('"', Browser) - 1) ;
+   ShellExecute(0, 'open', PChar(Browser), PChar(URL), nil, SW_SHOW) ;
+end;
+
+procedure TMain.LegionClick(Sender: TObject);
+begin
+  BrowseURL('http://bstudios.freehostia.com/chimera/');
+end;
+
+procedure TMain.SendAllOnceClick(Sender: TObject);
+var
+  i: Integer;
+  packetData: String;
+begin
+  for i := 0 to slData.Count - 1 do begin
+    packetData := slData[i];
+    sendPacket(packetData);
+  end;
+end;
+
+procedure TMain.SpamTimerTimer(Sender: TObject);
+var
+  packetData: String;
+begin
+  if ((slData.Count > 0) and SpamToggle.Checked) then begin
+   if (spamIndex >= (slData.Count)) then spamIndex := 0;
+   packetData := slData[spamIndex];
+   sendPacket(packetData);
+   spamIndex := spamIndex + 1;
+  end;
+end;
+
+procedure TMain.SpamToggleClick(Sender: TObject);
+begin
+  if SpamToggle.Checked then begin
+   SpamTimer.Enabled := true;
+   SpamTimer.Interval := StrToInt(SpamDelay.Text);
+  end else begin
+   SpamTimer.Enabled := false;
+   spamIndex := 0;
+  end;
+end;
+
+procedure TMain.SpamDelayChange(Sender: TObject);
+begin
+  if SpamToggle.Checked then SpamTimer.Interval := StrToInt(SpamDelay.Text);
+end;
+
+procedure TMain.SentClearClick(Sender: TObject);
+begin
+  typeStrings.Clear();
+  dataStrings.Clear();
+  sockStrings.Clear();
+  SendList.Clear();
+end;
+
+procedure TMain.SentStopClick(Sender: TObject);
+begin
+  if captureSent then begin
+   captureSent := false;
+   SentStop.Enabled := false;
+   SentStart.Enabled := true;
+  end;
+end;
+
+
+procedure TMain.ShopIDKeyPress(Sender: TObject; var Key: Char);
+begin
+if Key = #13 then //#13 = enter
+begin
+//----- Add Method Call in here -----
+//just a line to prove it works
+LoadShopClick(Sender);
+end;
+end;
+
+procedure TMain.SentStartClick(Sender: TObject);
+begin
+  if NOT captureSent then begin
+   captureSent := true;
+   SentStop.Enabled := true;
+   SentStart.Enabled := false;
+  end;
+end;
+
+procedure TMain.LoadSPTClick(Sender: TObject);
+var
+ f: File;
+ i: Integer;
+ bytes: array of Byte;
+ line: String;
+ lines: TStringList;
+ recording: Boolean;
+ done: Boolean;
+begin
+  if OpenSPT.Execute then begin
+    toSendList.Clear;
+    slData.Clear();
+    slSock.Clear();
+    AssignFile(f, OpenSPT.FileName);
+    Reset(f, 1);
+    SetLength(bytes, FileSize(f));
+    i := 0;
+    lines := TStringList.Create;
+    while not Eof(f) do begin
+      BlockRead(f, bytes[i], 1);
+      i := i + 1;
+    end;
+    CloseFile(f);
+    i := 0;
+    recording := false;
+    while (i <= (Length(bytes) - 1)) do begin
+      if recording then begin
+        done := false;
+        if bytes[i] = $25 then begin
+          line := '';
+          while not done do begin
+            if (bytes[i] = $00) or (i > Length(bytes) -1) then begin
+              lines.Add(line);
+              slData.Add(line);
+              slSock.Add(gameSocket);
+              toSendList.Items.Add(line);
+              line := '';
+              recording := false;
+              done := true;
+            end else begin
+              if (bytes[i] > $20) then line := line + Chr(bytes[i]);
+            end;
+            i := i + 1;
+          end;
+        end;
+      end else begin
+        if (bytes[i+1] = $00) and (bytes[i+2] = $00) and (bytes[i+3] = $00) then begin
+          recording := true;
+          i := i + 3;
+        end;
+      end;
+      i := i + 1;
+    end;
+  end;
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //This is a rather unique way of loading an SPT file. It loads SPTs faster than normal but it comes with a cost: reliablity.  //
+  //While taking a look at all the SPT files made for AQW, I realized something: all the packets are small lengthed thus the    //
+  //that holds their length always has it's last 3 bytes 00, meaning that each packet's length is smaller than or equal to 255. //
+  //Also all the packets end and start with a % character. Using these information I wrote a loading function that should load  //
+  //all SPTs made for AQW fast and 100% accurate, although it probably won't work for SPTs made for other games. To learn the   //
+  //data structure of an SPT file and write an SPT loader that has 100% accuracy for all games look at the commented part in SPT//
+  // saving function.                                                                                                           //
+  //                                                                                                                            //
+  //                                                          Your friendly neighbor,                                           //
+  //                                                                               isair                                        //
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+end;
+
+procedure TMain.LoadShopClick(Sender: TObject);
+var
+ packetData: String;
+begin
+  packetData := '%xt%' + zone + '%loadShop%' + characterID + '%' + ShopID.Text + '%';
+  sendPacket(packetData);
+end;
+
+procedure TMain.LoadHairClick(Sender: TObject);
+var
+ packetData: String;
+begin
+  packetData := '%xt%' + zone + '%loadHairShop%' + characterID + '%' + HairID.Text + '%';
+  sendPacket(packetData);
+end;
+
+procedure TMain.LoadEnchantmentClick(Sender: TObject);
+var
+ packetData: String;
+begin
+//  packetData := '%xt%' + zone + '%loadEnhShop%' + characterID + '%' + EnchantmentID.Text + '%';
+//  sendPacket(packetData);
+ShowMessage('This gets you kicked! So I''ve disabled it while I think of a button to replace it.');
+end;
+
+procedure TMain.ConfigureFiltersClick(Sender: TObject);
+begin
+  FilterForm.Show();
+end;
+
+procedure TMain.ConnecttoHellQuestServerClick(Sender: TObject);
+begin
+ WebBrowser.Navigate('http://aqworldscdn.aq.com/game/gamefiles/Loader.swf');
+end;
+
+procedure TMain.SendChatClick(Sender: TObject);
+var
+ packetData: String;
+begin
+  packetData := '';
+  if chat = 'chat' then begin
+    packetData := '%xt%' + zone + '%message%' + characterID + '%' + ChatLine.Text + '%zone%';
+  end else if chat = 'whisper' then begin
+    packetData := '%xt%' + zone + '%whisper%1%' + TextLine.Text + '%' + TextName.Text + '%';
+  end else if chat = 'emote' then begin
+    packetData := '%xt%' + zone + '%em%' + characterID + '%' + ChatLine.Text + '%event%';
+  end;
+  if packetData <> '' then sendPacket(packetData);
+  ChatLine.Text := '';
+  TextLine.Text := '';
+end;
+
+procedure TMain.PlayerActionClick(Sender: TObject);
+var
+ packetData: String;
+begin
+  packetData := '';
+  if act = 'summon' then packetData := '%xt%' + zone + '%gp%1%ps%' + SummonName.Text + '%'; //Summoning a player no longer works outisde of a party! No, not a beer party.
+  if act = 'go' then packetData := '%xt%' + zone + '%cmd%1%goto%' + SummonName.Text + '%';
+  if act = 'add' then packetData := '%xt%' + zone + '%requestFriend%1%' + SummonName.Text + '%';
+  if act = 'delete' then packetData := '%xt%' + zone + '%deleteFriend%1%1%' + SummonName.Text + '%';
+  if packetData <> '' then sendPacket(packetData);
+end;
+
+procedure TMain.OpenTimerTimer(Sender: TObject);
+var
+ i: Integer;
+begin
+ i := Main.AlphaBlendValue;
+ if i < 255 then begin
+  i := i + 5;
+  Main.AlphaBlendValue := i;
+ end else begin
+   Open.Enabled := false;
+   Block.Show;
+   THWGAForm.Show;
+ end;
+end;
+
+procedure TMain.LoadAutoScriptClick(Sender: TObject);
+begin
+ AutoerForm.Show();
+end;
+
+procedure TMain.sendPacket(data: string);
+var
+ len: integer;
+ ansiData: AnsiString;
+begin
+ ansiData := AnsiString(data);
+ len := Length(ansiData) + 1;
+ send(clientSocket, ansiData[1], len,0);
+end;
+
+procedure TMain.C1Click(Sender: TObject);
+begin
+ WebBrowser.Navigate('http://aq.com/aw-character.asp?id=artix');
+end;
+
+procedure TMain.ChangeClick(Sender: TObject);
+begin
+ slData[toSendList.ItemIndex] := PMemo.Text;
+ toSendList.Items.Strings[toSendList.ItemIndex] := PMemo.Text;
+end;
+
+procedure TMain.CheckForUpdatesClick(Sender: TObject);
+begin
+  UpdateForm.Show;
+end;
+
+procedure TMain.slRemoveAllClick(Sender: TObject);
+begin
+ SpamToggle.Checked := false;
+ spamIndex := 0;
+ toSendList.Clear;
+ slData.Clear;
+ slSock.Clear;
+end;
+
+procedure TMain.AdminMenuClick(Sender: TObject);
+var
+ data: string;
+begin
+  data := '';
+  ShowMessage('This will be completed until the stable version(1.0)!');  //Yeah, sure it will.
+end;
+
+procedure TMain.AdvancedDataManagementClick(Sender: TObject);
+begin
+  DataManagerForm.Show;
+end;
+
+procedure TMain.AutoPilotClick(Sender: TObject);
+begin
+  if not (characterName = 'N/A') then begin
+    Block.Show;
+    Block.Left := Main.Left;
+    Block.Top := Main.Top;
+    AutoPilotForm.Show;
+  end else
+    ShowMessage('Your character must be in game to start auto-piloting!');
+end;
+
+procedure TMain.SaveSPTClick(Sender: TObject);
+var
+  spt: file;
+  i, j: cardinal;
+  str: String;
+begin
+  if (WriteSPT.Execute) and (toSendList.Items.Count <> 0) then begin
+    AssignFile(spt, WriteSPT.FileName);
+    Rewrite(spt,1);
+    j := toSendList.Items.Count;
+    Blockwrite(spt, j, 4);
+    for i := 0 to (toSendList.Items.Count - 1) do begin
+      str := 'Next send';
+      j := length(str);
+      Blockwrite(spt, j, 4);
+      for j:=1 to length(str) do blockwrite(spt, str[j], 1);
+      str := toSendList.Items[i];
+      j := length(str);
+      Blockwrite(spt, j, 4);
+      for j:=1 to length(str) do blockwrite(spt, str[j], 1);
+    end;
+  CloseFile(spt);
+
+  {*
+
+  As you can see the structure of an SPT file is rather simple:
+
+  [Number of packets in the SPT file(integer, 4 bytes)][Length of the name of the first packet(integer, 4 bytes)][Name of the first packet(each char is 1 byte)][Length of the first packet(integer, 4 bytes)][First packet(each char is 1 byte)] ...
+
+  You should get it by now.
+
+  *}
+  end;
+end;
+
+procedure TMain.OpenEditorClick(Sender: TObject);
+begin
+  AdvancedPacketEditor.Show();
+end;
+
+procedure TMain.ComboActionChange(Sender: TObject);
+begin
+  if ComboAction.Text = 'Summon Player' then begin   //Summoning a player no longer works outside of a party!
+    PlayerAction.Caption := 'Summon!';
+    act := 'summon';
+  end else if ComboAction.Text = 'Go To Player' then begin
+    PlayerAction.Caption := 'Go!';
+    act := 'go'
+  end else if ComboAction.Text = 'Add Friend' then begin
+    PlayerAction.Caption := 'Add!';
+    act:= 'add';
+  end else if ComboAction.Text = 'Delete Friend' then begin
+    PlayerAction.Caption := 'Delete!';
+    act := 'delete';
+  end;
+end;
+
+procedure TMain.ComboChatChange(Sender: TObject);
+begin
+  if ComboChat.Text = 'Chat' then begin
+    chat := 'chat';
+    ChatLine.Visible := true;
+    TextName.Visible := false;
+    TextLine.Visible := false;
+  end else if ComboChat.Text = 'Whisper' then begin
+    chat := 'whisper';
+    ChatLine.Visible := false;
+    TextName.Visible := true;
+    TextLine.Visible := true;
+  end else if ComboChat.Text = 'Emote' then begin
+    chat := 'emote';
+    ChatLine.Visible := true;
+    TextName.Visible := false;
+    TextLine.Visible := false;
+  end;
+end;
+
+procedure TMain.LoadHScriptClick(Sender: TObject);
+begin
+  if OpenHScript.Execute then begin
+    ShowMessage('Sorry but you will be able to load a script in v0.85 because I did not have time to finish it yet :(');
+    {LoadScript(OpenHScript.FileName);
+    LoadHScript.Enabled := false;
+    UnloadHScript.Enabled := true;
+    LoadSPT.Enabled := false;
+    SaveSPT.Enabled := false;
+    LoadAutoScript.Enabled := false;
+    toSendList.Enabled := false;}
+
+    //I will never get to finish hell scripting will I?
+  end;
+end;
+
+procedure TMain.UnloadHScriptClick(Sender: TObject);
+begin
+  UnloadScript;
+end;
+
+procedure TMain.LoadScript(fname: string);
+var
+  f: TextFile;
+  data: string;
+  i, t: integer;
+  rawLine: TStringList;
+begin
+  AssignFile(f, fname);
+  Read(f, data);
+  CloseFile(f);
+  if data <> '' then begin
+    i := 0;
+    t := 0;
+    rawLine := TStringList.Create;
+    while i <= Length(data) do begin
+      if data[i] <> ';' then begin
+        rawLine.Strings[t] := rawLine.Strings[t] + data[i];
+      end else begin
+        t := t + 1;
+      end;
+    end;
+  end;
+end;
+
+procedure TMain.UnloadScript;
+begin
+  scriptLine.Clear;
+  scriptRunning := false;
+  LoadHScript.Enabled := true;
+  UnloadHScript.Enabled := false;
+  LoadSPT.Enabled := true;
+  SaveSPT.Enabled := true;
+  LoadAutoScript.Enabled := true;
+  toSendList.Enabled := true;
+end;
+
+procedure TMain.StartAutoPilotClick(Sender: TObject);
+begin
+  if not (characterName = 'N/A') then begin
+    Block.Show;
+    Block.Left := Main.Left;
+    Block.Top := Main.Top;
+    AutoPilotForm.Show;
+  end else
+    ShowMessage('Your character must be in game to start auto-piloting!');
+end;
+
+procedure TMain.PassToggleClick(Sender: TObject);
+begin
+ if showPassword then begin
+  showPassword := false;
+  Main.PassToggle.Caption := 'Show';
+  Main.Password.PasswordChar := '*'; //The password character that everyone knows and loves.
+ end else begin
+  showPassword := true;
+  Main.PassToggle.Caption := 'Hide';
+  Main.Password.PasswordChar := #0; //This makes it show the real characters of the password.
+ end;
+end;
+
+procedure TMain.ClanManagement1Click(Sender: TObject);
+begin
+ ClanForm.Show;
+end;
+
+procedure TMain.MainTimerTimer(Sender: TObject);
+begin
+ THWGAForm.FixTitle;  //Fix it biatch!
+end;
+
+procedure TMain.ManualConnectionClick(Sender: TObject);
+var
+ url: String;
+begin
+ url := InputBox('Manual Connection', 'Please write the URL of the game page:', 'http://game.aqworlds.com/game/');
+ WebBrowser.Navigate(url);
+end;
+
+procedure TMain.DataToggleClick(Sender: TObject);
+begin
+ if DataPanel.Visible then begin
+  DataPanel.Visible := false;
+  DataTitle.Visible := false;
+  DataSocket.Visible := false;
+  DataCharacterID.Visible := false;
+  DataToggle.Caption := '<';
+ end else begin
+  DataPanel.Visible := true;
+  DataTitle.Visible := true;
+  DataSocket.Visible := true;
+  DataCharacterID.Visible := true;
+  DataToggle.Caption := '>';
+ end;
+end;
+
+end.
+

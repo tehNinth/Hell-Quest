@@ -1,7 +1,7 @@
 object Main: TMain
   Left = 97
   Top = 0
-  Width = 1060
+  Width = 1185
   Height = 716
   HorzScrollBar.ButtonSize = 3
   HorzScrollBar.ParentColor = False
@@ -182,7 +182,6 @@ object Main: TMain
     ParentFont = False
     TabOrder = 4
     Text = '0'
-    OnKeyPress = ShopIDKeyPress
     SkinData.SkinSection = 'EDIT'
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -208,7 +207,6 @@ object Main: TMain
     ParentFont = False
     TabOrder = 5
     Text = '0'
-    OnKeyPress = HairIDKeyPress
     SkinData.SkinSection = 'EDIT'
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -563,8 +561,7 @@ object Main: TMain
     Items.Strings = (
       'Chat'
       'Whisper'
-      'Emote'
-      'Guild')
+      'Emote')
   end
   object ComboAction: TsComboBox
     Left = 656

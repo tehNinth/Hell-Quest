@@ -1,0 +1,56 @@
+unit Update;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, OleCtrls, SHDocVw, StdCtrls, sLabel, ExtCtrls, sPanel;
+
+type
+  TUpdateForm = class(TForm)
+    UpdateBrowser: TWebBrowser;
+    LoadingPanel: TsPanel;
+    LoadingText: TsLabelFX;
+    Timer: TTimer;
+    procedure FormShow(Sender: TObject);
+    procedure TimerTimer(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  UpdateForm: TUpdateForm;
+  sSWFList: TStringList;
+  sPlayerList: TStringList;
+
+implementation
+
+{$R *.dfm}
+
+procedure TUpdateForm.FormCreate(Sender: TObject);
+begin
+  sSWFList.Create;
+  sPlayerList.Create;
+end;
+
+procedure TUpdateForm.FormShow(Sender: TObject);
+var
+ i: Integer;
+begin
+  LoadingPanel.Visible := true;
+  LoadingText.Visible := true;
+  Timer.Enabled := true;
+  UpdateBrowser.Navigate('http://bstudios.freehostia.com/update/?v=0.88');
+end;
+
+procedure TUpdateForm.TimerTimer(Sender: TObject);
+begin
+  LoadingPanel.Visible := false;
+  LoadingText.Visible := false;
+  Timer.Enabled := false;
+end;
+
+end.

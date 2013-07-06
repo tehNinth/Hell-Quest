@@ -1,0 +1,325 @@
+object SWFMenuForm: TSWFMenuForm
+  Left = 265
+  Top = 149
+  Caption = 'SWF Menu'
+  ClientHeight = 336
+  ClientWidth = 396
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  Position = poDesigned
+  PixelsPerInch = 96
+  TextHeight = 13
+  object sLabelFX1: TsLabelFX
+    Left = 8
+    Top = 8
+    Width = 56
+    Height = 21
+    Caption = 'SWF URL:'
+    ParentFont = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14603725
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+  end
+  object sLabelFX2: TsLabelFX
+    Left = 8
+    Top = 72
+    Width = 74
+    Height = 21
+    Caption = 'Other Things:'
+    ParentFont = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14603725
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+  end
+  object sEdit1: TsEdit
+    Left = 70
+    Top = 8
+    Width = 318
+    Height = 21
+    Color = 16380653
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    Text = 'sEdit1'
+    SkinData.SkinSection = 'EDIT'
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'Tahoma'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+  end
+  object sButton1: TsButton
+    Left = 8
+    Top = 35
+    Width = 116
+    Height = 25
+    Caption = 'Load As Armor'
+    TabOrder = 1
+    SkinData.SkinSection = 'BUTTON'
+  end
+  object sButton2: TsButton
+    Left = 130
+    Top = 35
+    Width = 128
+    Height = 25
+    Caption = 'Load As Weapon'
+    TabOrder = 2
+    SkinData.SkinSection = 'BUTTON'
+  end
+  object sButton3: TsButton
+    Left = 264
+    Top = 35
+    Width = 124
+    Height = 25
+    Caption = 'Load As Pet'
+    TabOrder = 3
+    SkinData.SkinSection = 'BUTTON'
+  end
+  object sPanel1: TsPanel
+    Left = 8
+    Top = 99
+    Width = 380
+    Height = 229
+    TabOrder = 4
+    SkinData.SkinSection = 'PANEL'
+    object sLabelFX3: TsLabelFX
+      Left = 8
+      Top = 16
+      Width = 63
+      Height = 21
+      Caption = 'New Name:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object sLabelFX4: TsLabelFX
+      Left = 8
+      Top = 56
+      Width = 224
+      Height = 21
+      Caption = 'Advanced Messaging With Complete Control:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object sLabelFX5: TsLabelFX
+      Left = 40
+      Top = 83
+      Width = 81
+      Height = 21
+      Caption = 'Message Type:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object sLabelFX6: TsLabelFX
+      Left = 40
+      Top = 110
+      Width = 54
+      Height = 21
+      Caption = 'Message:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object sLabelFX7: TsLabelFX
+      Left = 40
+      Top = 137
+      Width = 44
+      Height = 21
+      Caption = 'Owner:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object sLabelFX8: TsLabelFX
+      Left = 40
+      Top = 164
+      Width = 23
+      Height = 21
+      Caption = 'ID:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object sEdit2: TsEdit
+      Left = 77
+      Top = 16
+      Width = 148
+      Height = 21
+      Color = 16380653
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      Text = 'sEdit2'
+      SkinData.SkinSection = 'EDIT'
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'Tahoma'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+    end
+    object sButton4: TsButton
+      Left = 231
+      Top = 16
+      Width = 75
+      Height = 20
+      Caption = 'Change It!'
+      TabOrder = 1
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object sEdit3: TsEdit
+      Left = 127
+      Top = 83
+      Width = 179
+      Height = 21
+      Color = 16380653
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      Text = 'moderator'
+      SkinData.SkinSection = 'EDIT'
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'Tahoma'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+    end
+    object sButton5: TsButton
+      Left = 40
+      Top = 191
+      Width = 266
+      Height = 25
+      Caption = 'Send Message!'
+      TabOrder = 3
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object sEdit4: TsEdit
+      Left = 127
+      Top = 110
+      Width = 179
+      Height = 21
+      Color = 16380653
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 4
+      Text = 'I love Hell Quest!'
+      SkinData.SkinSection = 'EDIT'
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'Tahoma'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+    end
+    object sEdit5: TsEdit
+      Left = 127
+      Top = 137
+      Width = 179
+      Height = 21
+      Color = 16380653
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+      Text = '[Artix]'
+      SkinData.SkinSection = 'EDIT'
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'Tahoma'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+    end
+    object sEdit6: TsEdit
+      Left = 127
+      Top = 164
+      Width = 179
+      Height = 21
+      Color = 16380653
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 6
+      Text = '0'
+      SkinData.SkinSection = 'EDIT'
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'Tahoma'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+    end
+  end
+end

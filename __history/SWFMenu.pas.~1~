@@ -1,0 +1,24 @@
+unit SWFMenu;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs;
+
+type
+  TSWFMenuForm = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  SWFMenuForm: TSWFMenuForm;
+
+implementation
+
+{$R *.dfm}
+
+end.

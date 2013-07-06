@@ -1,0 +1,237 @@
+object DataManagerForm: TDataManagerForm
+  Left = 274
+  Top = 100
+  Caption = 'Advanced Data Manager'
+  ClientHeight = 556
+  ClientWidth = 485
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesigned
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 13
+  object sPanel2: TsPanel
+    Left = 8
+    Top = 8
+    Width = 233
+    Height = 540
+    Caption = 'sPanel2'
+    TabOrder = 0
+    SkinData.SkinSection = 'PANEL'
+    object LabelSWF: TsLabelFX
+      Left = 8
+      Top = 8
+      Width = 131
+      Height = 21
+      Caption = 'Advanced .SWF Grabber:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object LabelBaseURL: TsLabelFX
+      Left = 8
+      Top = 451
+      Width = 57
+      Height = 21
+      Caption = 'Base URL:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object LabelViewClass: TsLabelFX
+      Left = 9
+      Top = 478
+      Width = 88
+      Height = 21
+      Caption = 'View Classes As:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object ButtonDownloadSWF: TsButton
+      Left = 8
+      Top = 505
+      Width = 217
+      Height = 25
+      Caption = 'Download Selected File'
+      TabOrder = 0
+      OnClick = ButtonDownloadSWFClick
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object SWFList: TsListBox
+      Left = 8
+      Top = 35
+      Width = 217
+      Height = 410
+      AutoCompleteDelay = 500
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'Tahoma'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+      SkinData.SkinSection = 'EDIT'
+      ItemHeight = 13
+      Color = 16380653
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+    end
+    object TextBaseURL: TsEdit
+      Left = 71
+      Top = 451
+      Width = 154
+      Height = 21
+      Color = 16380653
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      Text = 'http://game.aqworlds.com/game/gamefiles/'
+      SkinData.SkinSection = 'EDIT'
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'Tahoma'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+    end
+    object RadioButton1: TRadioButton
+      Left = 103
+      Top = 478
+      Width = 48
+      Height = 21
+      Caption = 'Male'
+      TabOrder = 3
+    end
+    object RadioButton2: TRadioButton
+      Left = 157
+      Top = 478
+      Width = 68
+      Height = 21
+      Caption = 'Female'
+      TabOrder = 4
+    end
+  end
+  object sPanel1: TsPanel
+    Left = 247
+    Top = 8
+    Width = 233
+    Height = 540
+    Caption = 'sPanel1'
+    TabOrder = 1
+    SkinData.SkinSection = 'PANEL'
+    object LabelPlayerCatcher: TsLabelFX
+      Left = 8
+      Top = 8
+      Width = 83
+      Height = 21
+      Caption = 'Player Catcher:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object LabelPlayerName: TsLabelFX
+      Left = 8
+      Top = 478
+      Width = 72
+      Height = 21
+      Caption = 'Player Name:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+    end
+    object ButtonDisplayPlayerInfo: TsButton
+      Left = 8
+      Top = 505
+      Width = 217
+      Height = 25
+      Caption = 'Display Player Info'
+      TabOrder = 0
+      SkinData.SkinSection = 'BUTTON'
+    end
+    object TextPlayerName: TsEdit
+      Left = 86
+      Top = 478
+      Width = 139
+      Height = 21
+      Color = 16380653
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      SkinData.SkinSection = 'EDIT'
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'Tahoma'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+    end
+    object PlayerList: TsListBox
+      Left = 8
+      Top = 35
+      Width = 217
+      Height = 437
+      AutoCompleteDelay = 500
+      BoundLabel.Indent = 0
+      BoundLabel.Font.Charset = DEFAULT_CHARSET
+      BoundLabel.Font.Color = clWindowText
+      BoundLabel.Font.Height = -11
+      BoundLabel.Font.Name = 'Tahoma'
+      BoundLabel.Font.Style = []
+      BoundLabel.Layout = sclLeft
+      BoundLabel.MaxWidth = 0
+      BoundLabel.UseSkinColor = True
+      SkinData.SkinSection = 'EDIT'
+      ItemHeight = 13
+      Color = 16380653
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+    end
+  end
+end

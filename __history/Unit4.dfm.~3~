@@ -1,0 +1,230 @@
+object AdvancedPacketEditor: TAdvancedPacketEditor
+  Left = 46
+  Top = 52
+  Caption = 'Hell Script IDE'
+  ClientHeight = 433
+  ClientWidth = 923
+  Color = clBlack
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 8
+    Top = 8
+    Width = 76
+    Height = 16
+    Caption = 'Project Name:'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Trebuchet MS'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 32
+    Width = 46
+    Height = 16
+    Caption = 'Objects:'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Trebuchet MS'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 8
+    Top = 120
+    Width = 53
+    Height = 16
+    Caption = 'Functions'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Trebuchet MS'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 8
+    Top = 304
+    Width = 86
+    Height = 16
+    Caption = 'Global Variables'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Height = -11
+    Font.Name = 'Trebuchet MS'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object CodeMemo: TMemo
+    Left = 224
+    Top = 8
+    Width = 689
+    Height = 417
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Trebuchet MS'
+    Font.Style = [fsBold]
+    ParentFont = False
+    ScrollBars = ssVertical
+    TabOrder = 0
+  end
+  object ListBox1: TListBox
+    Left = 8
+    Top = 48
+    Width = 209
+    Height = 57
+    BevelInner = bvNone
+    BevelOuter = bvNone
+    BorderStyle = bsNone
+    Color = clMaroon
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Trebuchet MS'
+    Font.Style = [fsBold]
+    ItemHeight = 16
+    Items.Strings = (
+      '[Timer](name, enabled, milliseconds)'
+      '[Main]')
+    ParentFont = False
+    TabOrder = 1
+  end
+  object ListBox2: TListBox
+    Left = 8
+    Top = 144
+    Width = 209
+    Height = 145
+    BevelInner = bvNone
+    BevelOuter = bvNone
+    BorderStyle = bsNone
+    Color = clMaroon
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Trebuchet MS'
+    Font.Style = [fsBold]
+    ItemHeight = 16
+    Items.Strings = (
+      'send(data);'
+      'say(line);'
+      'emote(line);'
+      'whisper(player, line);'
+      'goToMap(map, number);'
+      'goToPlayer(player);'
+      'summon(player);')
+    ParentFont = False
+    TabOrder = 2
+  end
+  object ListBox3: TListBox
+    Left = 8
+    Top = 328
+    Width = 209
+    Height = 97
+    BevelInner = bvNone
+    BevelOuter = bvNone
+    BorderStyle = bsNone
+    Color = clMaroon
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -11
+    Font.Name = 'Trebuchet MS'
+    Font.Style = [fsBold]
+    ItemHeight = 16
+    Items.Strings = (
+      '<zone>'
+      '<random>'
+      '<id>'
+      '<name>'
+      '<password>')
+    ParentFont = False
+    TabOrder = 3
+  end
+  object TextProjectName: TsEdit
+    Left = 90
+    Top = 6
+    Width = 121
+    Height = 21
+    Color = 16380653
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 4
+    SkinData.SkinSection = 'EDIT'
+    BoundLabel.Indent = 0
+    BoundLabel.Font.Charset = DEFAULT_CHARSET
+    BoundLabel.Font.Color = clWindowText
+    BoundLabel.Font.Height = -11
+    BoundLabel.Font.Name = 'Tahoma'
+    BoundLabel.Font.Style = []
+    BoundLabel.Layout = sclLeft
+    BoundLabel.MaxWidth = 0
+    BoundLabel.UseSkinColor = True
+  end
+  object MainMenu1: TMainMenu
+    Left = 160
+    Top = 64
+    object Prject1: TMenuItem
+      Caption = 'Project'
+      object New1: TMenuItem
+        Caption = 'New'
+        OnClick = New1Click
+      end
+      object Open1: TMenuItem
+        Caption = 'Open'
+        OnClick = Open1Click
+      end
+      object Save1: TMenuItem
+        Caption = 'Save'
+        OnClick = Save1Click
+      end
+      object SaveAs1: TMenuItem
+        Caption = 'Save As'
+        OnClick = SaveAs1Click
+      end
+    end
+    object Compile1: TMenuItem
+      Caption = 'Compile'
+      object HELLBinary1: TMenuItem
+        Caption = 'Compile'
+        OnClick = HELLBinary1Click
+      end
+      object RegularHELL1: TMenuItem
+        Caption = 'Compile And Load'
+        OnClick = RegularHELL1Click
+      end
+    end
+  end
+  object OpenHProject: TOpenDialog
+    DefaultExt = 'hproject'
+    Filter = 'Hell Project (*.hproject)|*.hproject'
+    Left = 192
+    Top = 64
+  end
+  object SaveHProject: TSaveDialog
+    DefaultExt = 'hproject'
+    Filter = 'Hell Project (*.hproject)|*.hproject'
+    Left = 192
+    Top = 96
+  end
+  object SaveHScript: TSaveDialog
+    DefaultExt = 'hscript'
+    Filter = 'Hell Script (*.hscript)|*.hscript'
+    Left = 160
+    Top = 96
+  end
+end

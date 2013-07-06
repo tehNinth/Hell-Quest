@@ -1,0 +1,27 @@
+unit HellViewer;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, OleCtrls, SHDocVw, StdCtrls, sLabel, ExtCtrls, sPanel;
+
+type
+  THellViewerForm = class(TForm)
+    WebBrowser1: TWebBrowser;
+    PanelLoading: TsPanel;
+    LabelLoading: TsLabelFX;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  HellViewerForm: THellViewerForm;
+
+implementation
+
+{$R *.dfm}
+
+end.

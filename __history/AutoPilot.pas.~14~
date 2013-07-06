@@ -1,0 +1,68 @@
+unit AutoPilot;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, sButton, sLabel, ExtCtrls;
+
+type
+  TAutoPilotForm = class(TForm)
+    StopAutoPilot: TsButton;
+    sLabel1: TsLabel;
+    LabelTime: TsLabel;
+    Counter: TTimer;
+    procedure StopAutoPilotClick(Sender: TObject);
+    procedure FormHide(Sender: TObject);
+    procedure CounterTimer(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  AutoPilotForm: TAutoPilotForm;
+  s, m , h: Integer;
+
+implementation
+
+uses BlockUnit;
+
+{$R *.dfm}
+
+procedure TAutoPilotForm.CounterTimer(Sender: TObject);
+begin
+  s := s + 1;
+  if s = 60 then begin
+   s := 0;
+   m := m + 1;
+   if m = 60 then begin
+     m := 0;
+     h := h + 1;
+   end;
+  end;
+  LabelTime.Caption := h + ' hours ' + m + ' minutes ' + s + ' seconds';
+end;
+
+procedure TAutoPilotForm.FormHide(Sender: TObject);
+begin
+  Block.Hide;
+  Counter.Enabled := false;
+  s := 0;
+  m := 0;
+  h := 0;
+end;
+
+procedure TAutoPilotForm.FormShow(Sender: TObject);
+begin
+  Counter.Enabled := true;
+end;
+
+procedure TAutoPilotForm.StopAutoPilotClick(Sender: TObject);
+begin
+  AutoPilotForm.Hide;
+end;
+
+end.

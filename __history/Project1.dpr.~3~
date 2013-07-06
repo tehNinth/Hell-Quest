@@ -1,0 +1,30 @@
+program Project1;
+
+uses
+  Forms,
+  Unit1 in 'Unit1.pas' {Main},
+  Unit2 in 'Unit2.pas' {FilterForm},
+  Unit3 in 'Unit3.pas' {AutoerForm},
+  Unit4 in 'Unit4.pas' {AdvancedPacketEditor},
+  THWGA in 'THWGA.pas' {THWGAForm},
+  BlockUnit in 'BlockUnit.pas' {Block},
+  Sentry in 'Sentry.pas' {SentryForm},
+  Clan in 'Clan.pas' {ClanForm},
+  AutoPilot in 'AutoPilot.pas' {AutoPilotForm};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.Title := 'Hell Quest';
+  Application.CreateForm(TMain, Main);
+  Application.CreateForm(TFilterForm, FilterForm);
+  Application.CreateForm(TAutoerForm, AutoerForm);
+  Application.CreateForm(TAdvancedPacketEditor, AdvancedPacketEditor);
+  Application.CreateForm(TTHWGAForm, THWGAForm);
+  Application.CreateForm(TBlock, Block);
+  Application.CreateForm(TSentryForm, SentryForm);
+  Application.CreateForm(TClanForm, ClanForm);
+  Application.CreateForm(TAutoPilotForm, AutoPilotForm);
+  Application.Run;
+end.

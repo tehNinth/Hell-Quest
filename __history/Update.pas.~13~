@@ -1,0 +1,39 @@
+unit Update;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, OleCtrls, SHDocVw, StdCtrls, sLabel, ExtCtrls, sPanel;
+
+type
+  TUpdateForm = class(TForm)
+    UpdateBrowser: TWebBrowser;
+    LoadingPanel: TsPanel;
+    LoadingText: TsLabelFX;
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  UpdateForm: TUpdateForm;
+
+implementation
+
+{$R *.dfm}
+
+procedure TUpdateForm.FormShow(Sender: TObject);
+var
+ i: Integer;
+begin
+  for i := 1 to 3 * 10 do begin
+    Sleep(100);
+    Application.ProcessMessages;
+  end;
+  UpdateBrowser.Navigate('http://bstudios.freehostia.com/update/?v=0.88');
+end;
+
+end.
