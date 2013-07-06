@@ -1,0 +1,81 @@
+unit AutoPilot;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, sButton, sLabel, ExtCtrls;
+
+type
+  TAutoPilotForm = class(TForm)
+    StopAutoPilot: TsButton;
+    sLabel1: TsLabel;
+    LabelTime: TsLabel;
+    Counter: TTimer;
+    sLabel2: TsLabel;
+    sLabel3: TsLabel;
+    sLabel4: TsLabel;
+    sLabel5: TsLabel;
+    LabelMap: TsLabel;
+    sLabel7: TsLabel;
+    sLabel8: TsLabel;
+    sLabel9: TsLabel;
+    procedure StopAutoPilotClick(Sender: TObject);
+    procedure FormHide(Sender: TObject);
+    procedure CounterTimer(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  AutoPilotForm: TAutoPilotForm;
+  s, m , h: Integer;
+
+implementation
+
+uses BlockUnit, Unit1;
+
+{$R *.dfm}
+
+procedure TAutoPilotForm.CounterTimer(Sender: TObject);
+begin
+  //Update labels
+  LabelMap.Caption := Unit1.currentMap;
+
+  //Count
+  s := s + 1;
+  if s = 60 then begin
+   s := 0;
+   m := m + 1;
+   if m = 60 then begin
+     m := 0;
+     h := h + 1;
+   end;
+  end;
+  LabelTime.Caption := IntToStr(h) + ' hours ' + IntToStr(m) + ' minutes ' + IntToStr(s) + ' seconds';
+end;
+
+procedure TAutoPilotForm.FormHide(Sender: TObject);
+begin
+  Block.Hide;
+  Counter.Enabled := false;
+  s := 0;
+  m := 0;
+  h := 0;
+  LabelTime.Caption := '0 hours 0 minutes 0 seconds';
+end;
+
+procedure TAutoPilotForm.FormShow(Sender: TObject);
+begin
+  Counter.Enabled := true;
+end;
+
+procedure TAutoPilotForm.StopAutoPilotClick(Sender: TObject);
+begin
+  AutoPilotForm.Hide;
+end;
+
+end.
