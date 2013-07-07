@@ -156,6 +156,8 @@ type
     procedure C1Click(Sender: TObject);
     procedure ShopIDKeyPress(Sender: TObject; var Key: Char);
     procedure HairIDKeyPress(Sender: TObject; var Key: Char);
+    procedure ChatLineKeyPress(Sender: TObject; var Key: Char);
+    procedure TextLineKeyPress(Sender: TObject; var Key: Char);
     //Yeah, I know. Tons of useless stuff.
   private
     FOleInPlaceActiveObject: IOleInPlaceActiveObject;
@@ -869,6 +871,16 @@ begin
  toSendList.Items.Strings[toSendList.ItemIndex] := PMemo.Text;
 end;
 
+procedure TMain.ChatLineKeyPress(Sender: TObject; var Key: Char);
+begin
+if Key = #13 then //#13 = enter
+begin
+//----- Add Method Call in here -----
+//just a line to prove it works
+SendChatClick(Sender);
+end;
+end;
+
 procedure TMain.CheckForUpdatesClick(Sender: TObject);
 begin
   UpdateForm.Show;
@@ -1055,6 +1067,16 @@ begin
     AutoPilotForm.Show;
   end else
     ShowMessage('Your character must be in game to start auto-piloting!');
+end;
+
+procedure TMain.TextLineKeyPress(Sender: TObject; var Key: Char);
+begin
+if Key = #13 then //#13 = enter
+begin
+//----- Add Method Call in here -----
+//just a line to prove it works
+SendChatClick(Sender);
+end;
 end;
 
 procedure TMain.PassToggleClick(Sender: TObject);

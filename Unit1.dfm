@@ -417,7 +417,7 @@ object Main: TMain
   end
   object PlayerAction: TsButton
     Left = 904
-    Top = 560
+    Top = 562
     Width = 75
     Height = 17
     Caption = 'Summon!'
@@ -484,7 +484,7 @@ object Main: TMain
   end
   object SendChat: TsButton
     Left = 608
-    Top = 560
+    Top = 562
     Width = 41
     Height = 17
     Caption = 'OK'
@@ -494,7 +494,7 @@ object Main: TMain
   end
   object Change: TsButton
     Left = 56
-    Top = 560
+    Top = 562
     Width = 49
     Height = 17
     Caption = 'Change'
@@ -504,7 +504,7 @@ object Main: TMain
   end
   object AddSend: TsButton
     Left = 112
-    Top = 560
+    Top = 562
     Width = 65
     Height = 17
     Caption = 'Add to List'
@@ -514,7 +514,7 @@ object Main: TMain
   end
   object SendOnce: TsButton
     Left = 184
-    Top = 560
+    Top = 562
     Width = 49
     Height = 17
     Caption = 'Send'
@@ -524,7 +524,7 @@ object Main: TMain
   end
   object Legion: TsButton
     Left = 240
-    Top = 560
+    Top = 562
     Width = 65
     Height = 17
     Caption = 'Legion'
@@ -613,6 +613,7 @@ object Main: TMain
     Font.Style = []
     ParentFont = False
     TabOrder = 33
+    OnKeyPress = ChatLineKeyPress
     SkinData.SkinSection = 'EDIT'
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -663,6 +664,7 @@ object Main: TMain
     ParentFont = False
     TabOrder = 35
     Visible = False
+    OnKeyPress = TextLineKeyPress
     SkinData.SkinSection = 'EDIT'
     BoundLabel.Indent = 0
     BoundLabel.Font.Charset = DEFAULT_CHARSET

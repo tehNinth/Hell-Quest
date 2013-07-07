@@ -11,12 +11,14 @@ I've decided to take up the project by adding features and removing old, buggy c
 - Removed the option to connect to Hell Quest servers (because dead-link)  
 - Removed Clan Management (because dead link)  
 - Added an extra option for sending chat packets to send Guild messages  
-- Added function to hit Enter when typing a Shop ID and Hair ID instead of relying on the button  
+- Added function to hit Enter to send when typing a Shop ID and Hair ID instead of relying on the button  
 - Removed "Load Enhancement" functionality to avoid getting kicked by mistake, replaced with informative message  
 - Added Character Page viewer  
 - Changed the skin because the old one had issues with compiling correctly  
 - Fixed an issue where the client's width would be changed
 - Updated base URL for game files
+- Adjusted height for the buttons along the bottom
+- Added function to hit Enter to send for Chat box
 
 More to come!
 
