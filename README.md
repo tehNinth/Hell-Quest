@@ -16,6 +16,7 @@ I've decided to take up the project by adding features and removing old, buggy c
 - Added Character Page viewer  
 - Changed the skin because the old one had issues with compiling correctly  
 - Fixed an issue where the client's width would be changed
+- Updated base URL for game files
 
 More to come!
 

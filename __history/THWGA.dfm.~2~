@@ -18,7 +18,7 @@ object THWGAForm: TTHWGAForm
   TextHeight = 13
   object Bar: TsGauge
     Left = 8
-    Top = 97
+    Top = 96
     Width = 617
     Height = 30
     SkinData.SkinSection = 'GAUGE'

@@ -80,6 +80,7 @@ begin
   //Well this is the really incomplete CRC (Cylic Redundancy Check). I was gonna finish it, but who cares.
   THWGAForm.Status.Caption := 'Checking...';
   THWGAForm.Refresh;
+  // trying to do something here WebBrowser1.Navigate('http://aqworldscdn.aq.com/game/gamefiles/Loader.swf');
   if not CheckStrings then begin
     THWGAForm.Status.Caption := 'Some values are invalid! Data corrupted or modified! Closing in 3 seconds...';
     THWGAForm.Refresh;

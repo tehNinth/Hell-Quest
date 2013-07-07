@@ -101,7 +101,6 @@ type
     sLabel24: TsLabel;
     sLabel25: TsLabel;
     DataToggle: TsButton;
-    ComboBox1: TComboBox;
     procedure updateLists;
     procedure UpdateSocketID(id: String; data: String);
     procedure ExtractInfo(data: String);
@@ -157,7 +156,6 @@ type
     procedure C1Click(Sender: TObject);
     procedure ShopIDKeyPress(Sender: TObject; var Key: Char);
     procedure HairIDKeyPress(Sender: TObject; var Key: Char);
-    procedure ComboBox1Change(Sender: TObject);
     //Yeah, I know. Tons of useless stuff.
   private
     FOleInPlaceActiveObject: IOleInPlaceActiveObject;
@@ -424,8 +422,8 @@ begin
   Application.OnMessage := MessageHandler;
   Main.Top := 0;
   Main.Left := 0;
-  Main.Width := 1170;
-  Main.Height := 714;
+//  Main.Width := 1170;  bloody nuisance, kept changing the client proportions
+//  Main.Height := 714;
   currentMap := '';
   zone := 'zm';
   act := 'summon';
@@ -449,7 +447,9 @@ begin
   SetWindowLong(SpamDelay.Handle, GWL_STYLE, GetWindowLong(SpamDelay.Handle, GWL_STYLE) or ES_NUMBER);
   SetWindowLong(AddSend.Handle, GWL_STYLE, GetWindowLong(AddSend.Handle, GWL_STYLE) or BS_MULTILINE);
   SetWindowLong(SendOnce.Handle, GWL_STYLE, GetWindowLong(SendOnce.Handle, GWL_STYLE) or BS_MULTILINE);
-  WebBrowser.Navigate('http://aqworldscdn.aq.com/game/gamefiles/Loader.swf');
+  WebBrowser.Navigate('http://aq.com/play-now/');
+  //Sleep(2000);
+  //WebBrowser.Navigate('http://aqworldscdn.aq.com/game/gamefiles/Loader.swf');
 end;
 
 procedure TMain.UpdateSocketID(id: String; data: String);
@@ -964,11 +964,6 @@ begin
     PlayerAction.Caption := 'Delete!';
     act := 'delete';
   end;
-end;
-
-procedure TMain.ComboBox1Change(Sender: TObject);
-begin
-
 end;
 
 procedure TMain.ComboChatChange(Sender: TObject);

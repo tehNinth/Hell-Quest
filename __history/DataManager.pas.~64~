@@ -4,8 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, sLabel, ExtCtrls, sPanel, sEdit, sButton, sAlphaListBox,
-  ShellAPI, registry, sCheckBox;
+  Dialogs, StdCtrls, sLabel, ExtCtrls, sPanel, sEdit, sButton,
+  sCheckBox, sListBox;
 
 type
   TDataManagerForm = class(TForm)
@@ -14,7 +14,7 @@ type
     ButtonDisplayPlayerInfo: TsButton;
     LabelPlayerName: TsLabelFX;
     TextPlayerName: TsEdit;
-    ButtonDownloadSWF: TsButton;
+    ButtonViewSWF: TsButton;
     SWFList: TsListBox;
     PlayerList: TsListBox;
     sPanel1: TsPanel;
@@ -26,7 +26,7 @@ type
     CheckFemale: TsCheckBox;
     procedure AddSWF(buffer: string; position: integer);
     procedure FormCreate(Sender: TObject);
-    procedure ButtonDownloadSWFClick(Sender: TObject);
+    procedure ButtonViewSWFClick(Sender: TObject);
     procedure CheckMaleClick(Sender: TObject);
     procedure CheckFemaleClick(Sender: TObject);
   private
@@ -42,7 +42,7 @@ var
 
 implementation
 
-uses Unit1;
+uses Unit1, HellViewer;
 
 {$R *.dfm}
 
@@ -59,29 +59,6 @@ begin
  Result := return;
 end;
 
-procedure BrowseURL(const URL: string);
-var
-   Browser: string;
-begin
-   Browser := '';
-   with TRegistry.Create do
-   try
-     RootKey := HKEY_CLASSES_ROOT;
-     Access := KEY_QUERY_VALUE;
-     if OpenKey('\htmlfile\shell\open\command', False) then
-       Browser := ReadString('') ;
-     CloseKey;
-   finally
-     Free;
-   end;
-   if Browser = '' then begin
-     Exit;
-   end;
-   Browser := Copy(Browser, Pos('"', Browser) + 1, Length(Browser)) ;
-   Browser := Copy(Browser, 1, Pos('"', Browser) - 1) ;
-   ShellExecute(0, 'open', PChar(Browser), PChar(URL), nil, SW_SHOW) ;
-end;
-
 procedure TDataManagerForm.AddSWF(buffer: string; position: integer);
 var
   i, pos: integer;
@@ -95,22 +72,28 @@ begin
    i := i + 1;
    Application.ProcessMessages;
   end;
+  text := ReverseString(text);
   if (text <> '') and (text[1] <> '>') then begin
-    text := ReverseString(text);
     text := text + '.swf';
     if (SWFList.Items.IndexOf(text) = -1) then SWFList.Items.Add(text);
   end;
 end;
 
-procedure TDataManagerForm.ButtonDownloadSWFClick(Sender: TObject);
+procedure TDataManagerForm.ButtonViewSWFClick(Sender: TObject);
 var
  url: string;
 begin
   if SWFList.ItemIndex <> -1 then begin
     url := TextBaseURL.Text;
-    if AnsiPos('skin', SWFList.Items[SWFList.ItemIndex]) <> 0 then url := url + 'classes/M/';
+    if AnsiPos('skin', SWFList.Items[SWFList.ItemIndex]) <> 0 then begin
+      url := url + 'classes/';
+      if CheckMale.Checked then url := url + 'M/'
+      else url := url + 'F/';
+    end;
     url := url + SWFList.Items[SWFList.ItemIndex];
-    BrowseURL('javascript:void(window.location = "' + url + '"; setDelay("alert(\"You can use Save Page As function to save the .swf file to your computer!\")", 1000))');
+    HellViewerForm.Hide;
+    HellViewer.url := url;
+    HellViewerForm.Show;
   end;
 end;
 

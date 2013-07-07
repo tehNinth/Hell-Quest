@@ -422,8 +422,8 @@ begin
   Application.OnMessage := MessageHandler;
   Main.Top := 0;
   Main.Left := 0;
-  Main.Width := 1200;
-  Main.Height := 714;
+//  Main.Width := 1170;  bloody nuisance, kept changing the client proportions
+//  Main.Height := 714;
   currentMap := '';
   zone := 'zm';
   act := 'summon';
@@ -447,6 +447,8 @@ begin
   SetWindowLong(SpamDelay.Handle, GWL_STYLE, GetWindowLong(SpamDelay.Handle, GWL_STYLE) or ES_NUMBER);
   SetWindowLong(AddSend.Handle, GWL_STYLE, GetWindowLong(AddSend.Handle, GWL_STYLE) or BS_MULTILINE);
   SetWindowLong(SendOnce.Handle, GWL_STYLE, GetWindowLong(SendOnce.Handle, GWL_STYLE) or BS_MULTILINE);
+  WebBrowser.Navigate('http://aq.com/play-now/');
+  Sleep(200);
   WebBrowser.Navigate('http://aqworldscdn.aq.com/game/gamefiles/Loader.swf');
 end;
 

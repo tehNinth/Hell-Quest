@@ -20,7 +20,7 @@ uses
 
 begin
   Application.Initialize;
-  Application.Title := 'Hell Quest v0.9.1';
+  Application.Title := 'Hell Quest';
   Application.CreateForm(TMain, Main);
   Application.CreateForm(TFilterForm, FilterForm);
   Application.CreateForm(TAutoerForm, AutoerForm);

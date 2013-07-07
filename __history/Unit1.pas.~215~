@@ -191,7 +191,7 @@ var
 begin
  len := Length(str);
  SetLength(return, len);
- i := 1;
+// i := 1;
  for i := 1 to len do begin
   return[i] := str[len - i + 1];
  end;
@@ -422,8 +422,8 @@ begin
   Application.OnMessage := MessageHandler;
   Main.Top := 0;
   Main.Left := 0;
-  Main.Width := 1170;
-  Main.Height := 714;
+//  Main.Width := 1170;  bloody nuisance, kept changing the client proportions
+//  Main.Height := 714;
   currentMap := '';
   zone := 'zm';
   act := 'summon';
@@ -809,7 +809,7 @@ begin
   end else if chat = 'emote' then begin
     packetData := '%xt%' + zone + '%em%' + characterID + '%' + ChatLine.Text + '%event%';
   end else if chat = 'guild' then begin
-    packetData := '%xt%' + zone + '%guild%' + characterID + '%' + ChatLine.Text + '%event%';
+    packetData := '%xt%' + zone + '%message%' + characterID + '%' + ChatLine.Text + '%guild%';
   end;
   if packetData <> '' then sendPacket(packetData);
   ChatLine.Text := '';
@@ -978,6 +978,11 @@ begin
     TextLine.Visible := true;
   end else if ComboChat.Text = 'Emote' then begin
     chat := 'emote';
+    ChatLine.Visible := true;
+    TextName.Visible := false;
+    TextLine.Visible := false;
+  end else if ComboChat.Text = 'Guild' then begin
+    chat := 'guild';
     ChatLine.Visible := true;
     TextName.Visible := false;
     TextLine.Visible := false;

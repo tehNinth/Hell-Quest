@@ -154,7 +154,8 @@ type
     procedure ManualConnectionClick(Sender: TObject);
     procedure ConnecttoHellQuestServerClick(Sender: TObject);
     procedure C1Click(Sender: TObject);
-    procedure ShopIDChange(Sender: TObject);
+    procedure ShopIDKeyPress(Sender: TObject; var Key: Char);
+    procedure HairIDKeyPress(Sender: TObject; var Key: Char);
     //Yeah, I know. Tons of useless stuff.
   private
     FOleInPlaceActiveObject: IOleInPlaceActiveObject;
@@ -190,7 +191,7 @@ var
 begin
  len := Length(str);
  SetLength(return, len);
- i := 1;
+// i := 1;
  for i := 1 to len do begin
   return[i] := str[len - i + 1];
  end;
@@ -421,8 +422,8 @@ begin
   Application.OnMessage := MessageHandler;
   Main.Top := 0;
   Main.Left := 0;
-  Main.Width := 1170;
-  Main.Height := 714;
+//  Main.Width := 1170;  bloody nuisance, kept changing the client proportions
+//  Main.Height := 714;
   currentMap := '';
   zone := 'zm';
   act := 'summon';
@@ -446,6 +447,8 @@ begin
   SetWindowLong(SpamDelay.Handle, GWL_STYLE, GetWindowLong(SpamDelay.Handle, GWL_STYLE) or ES_NUMBER);
   SetWindowLong(AddSend.Handle, GWL_STYLE, GetWindowLong(AddSend.Handle, GWL_STYLE) or BS_MULTILINE);
   SetWindowLong(SendOnce.Handle, GWL_STYLE, GetWindowLong(SendOnce.Handle, GWL_STYLE) or BS_MULTILINE);
+  WebBrowser.Navigate('http://aq.com/play-now/');
+  //Sleep(2000);
   WebBrowser.Navigate('http://aqworldscdn.aq.com/game/gamefiles/Loader.swf');
 end;
 
@@ -536,6 +539,16 @@ begin
     end;
     Password.Text := characterPassword;
   end;
+end;
+
+procedure TMain.HairIDKeyPress(Sender: TObject; var Key: Char);
+begin
+if Key = #13 then //#13 = enter
+begin
+//----- Add Method Call in here -----
+//just a line to prove it works
+LoadHairClick(Sender);
+end;
 end;
 
 procedure TMain.SendListClick(Sender: TObject);
@@ -663,6 +676,15 @@ begin
 end;
 
 
+procedure TMain.ShopIDKeyPress(Sender: TObject; var Key: Char);
+begin
+if Key = #13 then //#13 = enter
+begin
+//----- Add Method Call in here -----
+//just a line to prove it works
+LoadShopClick(Sender);
+end;
+end;
 
 procedure TMain.SentStartClick(Sender: TObject);
 begin
@@ -759,11 +781,12 @@ begin
 end;
 
 procedure TMain.LoadEnchantmentClick(Sender: TObject);
-var
- packetData: String;
+//var
+// packetData: String;
 begin
-  packetData := '%xt%' + zone + '%loadEnhShop%' + characterID + '%' + EnchantmentID.Text + '%';
-  sendPacket(packetData);
+//  packetData := '%xt%' + zone + '%loadEnhShop%' + characterID + '%' + EnchantmentID.Text + '%';
+//  sendPacket(packetData);
+ShowMessage('This gets you kicked! So I''ve disabled it while I think of a button to replace it.');
 end;
 
 procedure TMain.ConfigureFiltersClick(Sender: TObject);
@@ -787,6 +810,8 @@ begin
     packetData := '%xt%' + zone + '%whisper%1%' + TextLine.Text + '%' + TextName.Text + '%';
   end else if chat = 'emote' then begin
     packetData := '%xt%' + zone + '%em%' + characterID + '%' + ChatLine.Text + '%event%';
+  end else if chat = 'guild' then begin
+    packetData := '%xt%' + zone + '%message%' + characterID + '%' + ChatLine.Text + '%guild%';
   end;
   if packetData <> '' then sendPacket(packetData);
   ChatLine.Text := '';
@@ -955,6 +980,11 @@ begin
     TextLine.Visible := true;
   end else if ComboChat.Text = 'Emote' then begin
     chat := 'emote';
+    ChatLine.Visible := true;
+    TextName.Visible := false;
+    TextLine.Visible := false;
+  end else if ComboChat.Text = 'Guild' then begin
+    chat := 'guild';
     ChatLine.Visible := true;
     TextName.Visible := false;
     TextLine.Visible := false;

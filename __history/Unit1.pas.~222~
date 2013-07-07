@@ -422,8 +422,8 @@ begin
   Application.OnMessage := MessageHandler;
   Main.Top := 0;
   Main.Left := 0;
-  Main.Width := 1170;
-  Main.Height := 714;
+//  Main.Width := 1170;  bloody nuisance, kept changing the client proportions
+//  Main.Height := 714;
   currentMap := '';
   zone := 'zm';
   act := 'summon';

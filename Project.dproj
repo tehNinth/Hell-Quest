@@ -1,20 +1,15 @@
-  <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 		<PropertyGroup>
 			<ProjectGuid>{22728274-32F8-4748-91A3-BA48210DF63B}</ProjectGuid>
 			<MainSource>Project1.dpr</MainSource>
-			<Config Condition="'$(Config)'==''">Debug</Config>
+			<Config Condition="'$(Config)'==''">Basic</Config>
 			<DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
 			<ProjectVersion>12.0</ProjectVersion>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
 			<Base>true</Base>
 		</PropertyGroup>
-		<PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
-			<Cfg_1>true</Cfg_1>
-			<CfgParent>Base</CfgParent>
-			<Base>true</Base>
-		</PropertyGroup>
-		<PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+		<PropertyGroup Condition="'$(Config)'=='Basic' or '$(Cfg_2)'!=''">
 			<Cfg_2>true</Cfg_2>
 			<CfgParent>Base</CfgParent>
 			<Base>true</Base>
@@ -31,12 +26,6 @@
 			<DCC_K>false</DCC_K>
 			<DCC_E>false</DCC_E>
 			<DCC_F>false</DCC_F>
-		</PropertyGroup>
-		<PropertyGroup Condition="'$(Cfg_1)'!=''">
-			<DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
-			<DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
-			<DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
-			<DCC_DebugInformation>false</DCC_DebugInformation>
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Cfg_2)'!=''">
 			<DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
@@ -87,12 +76,8 @@
 			<BuildConfiguration Include="Base">
 				<Key>Base</Key>
 			</BuildConfiguration>
-			<BuildConfiguration Include="Debug">
+			<BuildConfiguration Include="Basic">
 				<Key>Cfg_2</Key>
-				<CfgParent>Base</CfgParent>
-			</BuildConfiguration>
-			<BuildConfiguration Include="Release">
-				<Key>Cfg_1</Key>
 				<CfgParent>Base</CfgParent>
 			</BuildConfiguration>
 		</ItemGroup>
@@ -111,32 +96,39 @@
 						<Parameters Name="LoadUnspecifiedSymbols">False</Parameters>
 					</Parameters>
 					<VersionInfo>
-						<VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+						<VersionInfo Name="IncludeVerInfo">True</VersionInfo>
 						<VersionInfo Name="AutoIncBuild">False</VersionInfo>
 						<VersionInfo Name="MajorVer">0</VersionInfo>
-						<VersionInfo Name="MinorVer">84</VersionInfo>
-						<VersionInfo Name="Release">0</VersionInfo>
+						<VersionInfo Name="MinorVer">9</VersionInfo>
+						<VersionInfo Name="Release">1</VersionInfo>
 						<VersionInfo Name="Build">0</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
 						<VersionInfo Name="Private">False</VersionInfo>
 						<VersionInfo Name="DLL">False</VersionInfo>
-						<VersionInfo Name="Locale">3081</VersionInfo>
+						<VersionInfo Name="Locale">2057</VersionInfo>
 						<VersionInfo Name="CodePage">1252</VersionInfo>
 					</VersionInfo>
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
-						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">0.84.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="FileDescription">It&apos;s Hell Quest, bischh. Client for AQW.</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">0.9.1.0</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright"/>
 						<VersionInfoKeys Name="LegalTrademarks"/>
 						<VersionInfoKeys Name="OriginalFilename"/>
-						<VersionInfoKeys Name="ProductName"/>
-						<VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductName">Hell Quest</VersionInfoKeys>
+						<VersionInfoKeys Name="ProductVersion">0.9.1</VersionInfoKeys>
 						<VersionInfoKeys Name="Comments"/>
 					</VersionInfoKeys>
+					<Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\bcboffice2k120.bpl">CodeGear C++Builder Office 2000 Servers Package</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\bcbofficexp120.bpl">CodeGear C++Builder Office XP Servers Package</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dcloffice2k120.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="$(BDS)\bin\dclofficexp120.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+						<Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\6.0\Bpl\flersh.bpl">derp</Excluded_Packages>
+					</Excluded_Packages>
 				</Delphi.Personality>
 				<ModelSupport>False</ModelSupport>
 			</BorlandProject>

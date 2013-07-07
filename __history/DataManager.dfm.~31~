@@ -10,6 +10,7 @@ object DataManagerForm: TDataManagerForm
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  FormStyle = fsStayOnTop
   OldCreateOrder = False
   Position = poDesigned
   OnCreate = FormCreate
@@ -35,10 +36,13 @@ object DataManagerForm: TDataManagerForm
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -3
+      Shadow.OffsetKeeper.RightBottom = 5
     end
     object LabelBaseURL: TsLabelFX
       Left = 8
-      Top = 478
+      Top = 451
       Width = 57
       Height = 21
       Caption = 'Base URL:'
@@ -48,23 +52,50 @@ object DataManagerForm: TDataManagerForm
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -3
+      Shadow.OffsetKeeper.RightBottom = 5
     end
-    object ButtonDownloadSWF: TsButton
+    object LabelViewClass: TsLabelFX
+      Left = 9
+      Top = 478
+      Width = 88
+      Height = 21
+      Caption = 'View Classes As:'
+      ParentFont = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 14603725
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -3
+      Shadow.OffsetKeeper.RightBottom = 5
+    end
+    object ButtonViewSWF: TsButton
       Left = 8
       Top = 505
       Width = 217
       Height = 25
-      Caption = 'Download Selected File'
+      Caption = 'View Selected File'
       TabOrder = 0
-      OnClick = ButtonDownloadSWFClick
+      OnClick = ButtonViewSWFClick
       SkinData.SkinSection = 'BUTTON'
     end
     object SWFList: TsListBox
       Left = 8
       Top = 35
       Width = 217
-      Height = 437
-      AutoCompleteDelay = 500
+      Height = 410
+      Color = 16380653
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ItemHeight = 13
+      ParentFont = False
+      TabOrder = 1
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
       BoundLabel.Font.Color = clWindowText
@@ -75,19 +106,10 @@ object DataManagerForm: TDataManagerForm
       BoundLabel.MaxWidth = 0
       BoundLabel.UseSkinColor = True
       SkinData.SkinSection = 'EDIT'
-      ItemHeight = 13
-      Color = 16380653
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 1
     end
     object TextBaseURL: TsEdit
       Left = 71
-      Top = 478
+      Top = 451
       Width = 154
       Height = 21
       Color = 16380653
@@ -110,6 +132,32 @@ object DataManagerForm: TDataManagerForm
       BoundLabel.MaxWidth = 0
       BoundLabel.UseSkinColor = True
     end
+    object CheckMale: TsCheckBox
+      Left = 103
+      Top = 480
+      Width = 47
+      Height = 19
+      Caption = 'Male'
+      Checked = True
+      State = cbChecked
+      TabOrder = 3
+      OnClick = CheckMaleClick
+      SkinData.SkinSection = 'CHECKBOX'
+      ImgChecked = 0
+      ImgUnchecked = 0
+    end
+    object CheckFemale: TsCheckBox
+      Left = 158
+      Top = 480
+      Width = 59
+      Height = 19
+      Caption = 'Female'
+      TabOrder = 4
+      OnClick = CheckFemaleClick
+      SkinData.SkinSection = 'CHECKBOX'
+      ImgChecked = 0
+      ImgUnchecked = 0
+    end
   end
   object sPanel1: TsPanel
     Left = 247
@@ -131,6 +179,9 @@ object DataManagerForm: TDataManagerForm
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -3
+      Shadow.OffsetKeeper.RightBottom = 5
     end
     object LabelPlayerName: TsLabelFX
       Left = 8
@@ -144,6 +195,9 @@ object DataManagerForm: TDataManagerForm
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
+      Angle = 0
+      Shadow.OffsetKeeper.LeftTop = -3
+      Shadow.OffsetKeeper.RightBottom = 5
     end
     object ButtonDisplayPlayerInfo: TsButton
       Left = 8
@@ -183,7 +237,17 @@ object DataManagerForm: TDataManagerForm
       Top = 35
       Width = 217
       Height = 437
-      AutoCompleteDelay = 500
+      Color = 16380653
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ItemHeight = 13
+      Items.Strings = (
+        'Not Complete Yet')
+      ParentFont = False
+      TabOrder = 2
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
       BoundLabel.Font.Color = clWindowText
@@ -194,15 +258,6 @@ object DataManagerForm: TDataManagerForm
       BoundLabel.MaxWidth = 0
       BoundLabel.UseSkinColor = True
       SkinData.SkinSection = 'EDIT'
-      ItemHeight = 13
-      Color = 16380653
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 2
     end
   end
 end

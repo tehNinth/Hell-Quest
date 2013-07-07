@@ -87,9 +87,9 @@ object DataManagerForm: TDataManagerForm
       Top = 35
       Width = 217
       Height = 410
-      Color = 16380653
+      Color = 1710618
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
+      Font.Color = 10329501
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
@@ -112,15 +112,15 @@ object DataManagerForm: TDataManagerForm
       Top = 451
       Width = 154
       Height = 21
-      Color = 16380653
+      Color = 1710618
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
+      Font.Color = 10329501
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       TabOrder = 2
-      Text = 'http://game.aqworlds.com/game/gamefiles/'
+      Text = 'http://aqworldscdn.aq.com/game/gamefiles/'
       SkinData.SkinSection = 'EDIT'
       BoundLabel.Indent = 0
       BoundLabel.Font.Charset = DEFAULT_CHARSET
@@ -135,8 +135,8 @@ object DataManagerForm: TDataManagerForm
     object CheckMale: TsCheckBox
       Left = 103
       Top = 480
-      Width = 47
-      Height = 19
+      Width = 50
+      Height = 20
       Caption = 'Male'
       Checked = True
       State = cbChecked
@@ -149,8 +149,8 @@ object DataManagerForm: TDataManagerForm
     object CheckFemale: TsCheckBox
       Left = 158
       Top = 480
-      Width = 59
-      Height = 19
+      Width = 62
+      Height = 20
       Caption = 'Female'
       TabOrder = 4
       OnClick = CheckFemaleClick
@@ -213,9 +213,9 @@ object DataManagerForm: TDataManagerForm
       Top = 478
       Width = 139
       Height = 21
-      Color = 16380653
+      Color = 1710618
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
+      Font.Color = 10329501
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []
@@ -237,9 +237,9 @@ object DataManagerForm: TDataManagerForm
       Top = 35
       Width = 217
       Height = 437
-      Color = 16380653
+      Color = 1710618
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
+      Font.Color = 10329501
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = []

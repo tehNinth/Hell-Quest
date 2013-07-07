@@ -3,7 +3,7 @@ object HellViewerForm: THellViewerForm
   Top = 145
   Caption = 'Hell Viewer'
   ClientHeight = 376
-  ClientWidth = 673
+  ClientWidth = 676
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
