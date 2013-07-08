@@ -564,7 +564,8 @@ object Main: TMain
       'Chat'
       'Whisper'
       'Emote'
-      'Guild')
+      'Guild'
+      'Party')
   end
   object ComboAction: TsComboBox
     Left = 656

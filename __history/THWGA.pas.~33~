@@ -48,25 +48,16 @@ end;
 
 procedure TTHWGAForm.FixTitle;
 begin
- if Main.Caption <> ReverseString(')moc.liamg@hcm05a23nur( riasi yb 59.0v tseuQ lleH') then
-   Main.Caption := ReverseString(')moc.liamg@hcm05a23nur( riasi yb 59.0v tseuQ lleH');
+ if Main.Caption <> ReverseString('htniNehT yb dekrof 1.9.0v tseuQ lleH') then
+   Main.Caption := ReverseString('htniNehT yb dekrof 1.9.0v tseuQ lleH');
  if Application.Title <> ReverseString('tseuQ lleH') then
    Application.Title := ReverseString('tseuQ lleH');
 end;
 
 function CheckStrings: boolean;
 begin
-  if (Main.Caption <> ReverseString(')moc.liamg@hcm05a23nur( riasi yb 59.0v tseuQ lleH')) or (Application.Title <> ReverseString('tseuQ lleH')) then begin
+  if (Main.Caption <> ReverseString('htniNehT yb dekrof 1.9.0v tseuQ lleH')) or (Application.Title <> ReverseString('tseuQ lleH')) then begin
    Result := false;
-  end else if 1 = 1 then begin
-   Sleep(100);
-   THWGAForm.Bar.Progress := 60;
-  end else if 1 = 1 then begin
-   Sleep(100);
-   THWGAForm.Bar.Progress := 70;
-  end else if 1 = 1 then begin
-   Sleep(100);
-   THWGAForm.Bar.Progress := 80;
   end else if 1 = 1 then begin
    Sleep(100);
    THWGAForm.Bar.Progress := 90;
@@ -86,31 +77,22 @@ end;
 
 procedure TTHWGAForm.Check;
 begin
-  Sleep(100);
-  Bar.Progress := 10;
-  Sleep(100);
-  Bar.Progress := 20;
+  //Well this is the really incomplete CRC (Cylic Redundancy Check). I was gonna finish it, but who cares.
   THWGAForm.Status.Caption := 'Checking...';
   THWGAForm.Refresh;
-  Sleep(200);
-  Bar.Progress := 45;
-  Sleep(100);
-  Bar.Progress := 50;
-  Sleep(400);
+  // trying to do something here WebBrowser1.Navigate('http://aqworldscdn.aq.com/game/gamefiles/Loader.swf');
   if not CheckStrings then begin
     THWGAForm.Status.Caption := 'Some values are invalid! Data corrupted or modified! Closing in 3 seconds...';
     THWGAForm.Refresh;
     Sleep(3000);
     Application.Terminate;
   end else begin
-    THWGAForm.Status.Caption := 'This version of Hell Quest is not corrupted and/or modified! Starting 2 seconds.';
+    THWGAForm.Status.Caption := 'This version of Hell Quest is not corrupted and/or modified! Starting.';
     THWGAForm.Refresh;
     Bar.Progress := 100;
-    Sleep(2000);
+    Sleep(100);
     THWGAForm.Hide;
     Block.Hide;
-    Main.Game.LoadMovie(0, 'http://game.aqworlds.com/game/gamefiles/Game_04.swf');
-    Main.Game.Base :='http://game.aqworlds.com/';
   end;
 end;
 

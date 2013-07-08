@@ -48,15 +48,15 @@ end;
 
 procedure TTHWGAForm.FixTitle;
 begin
- if Main.Caption <> ReverseString('htniNehT yb dekrof 1.9.0v tseuQ lleH') then
-   Main.Caption := ReverseString('htniNehT yb dekrof 1.9.0v tseuQ lleH');
+ if Main.Caption <> ReverseString('htniNehT yb 51.1.9.0v tseuQ lleH') then
+   Main.Caption := ReverseString('htniNehT yb 51.1.9.0v tseuQ lleH');
  if Application.Title <> ReverseString('tseuQ lleH') then
    Application.Title := ReverseString('tseuQ lleH');
 end;
 
 function CheckStrings: boolean;
 begin
-  if (Main.Caption <> ReverseString('htniNehT yb dekrof 1.9.0v tseuQ lleH')) or (Application.Title <> ReverseString('tseuQ lleH')) then begin
+  if (Main.Caption <> ReverseString('htniNehT yb 51.1.9.0v tseuQ lleH')) or (Application.Title <> ReverseString('tseuQ lleH')) then begin
    Result := false;
   end else if 1 = 1 then begin
    Sleep(100);

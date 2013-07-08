@@ -19,6 +19,7 @@ I've decided to take up the project by adding features and removing old, buggy c
 - Updated base URL for game files
 - Adjusted height for the buttons along the bottom
 - Added function to hit Enter to send for Chat box
+- Added an extra option for sending chat packets to send Party messages
 
 More to come!
 

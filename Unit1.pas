@@ -812,6 +812,8 @@ begin
     packetData := '%xt%' + zone + '%em%' + characterID + '%' + ChatLine.Text + '%event%';
   end else if chat = 'guild' then begin
     packetData := '%xt%' + zone + '%message%' + characterID + '%' + ChatLine.Text + '%guild%';
+  end else if chat = 'party' then begin
+    packetData := '%xt%' + zone + '%message%' + characterID + '%' + ChatLine.Text + '%party%';
   end;
   if packetData <> '' then sendPacket(packetData);
   ChatLine.Text := '';
@@ -995,6 +997,11 @@ begin
     TextLine.Visible := false;
   end else if ComboChat.Text = 'Guild' then begin
     chat := 'guild';
+    ChatLine.Visible := true;
+    TextName.Visible := false;
+    TextLine.Visible := false;
+  end else if ComboChat.Text = 'Party' then begin
+    chat := 'party';
     ChatLine.Visible := true;
     TextName.Visible := false;
     TextLine.Visible := false;
