@@ -5,6 +5,7 @@ I've decided to take up the project by adding features and removing old, buggy c
 
 ## Notes on versions
 ### 0.9.1  
+#### This version is all about amending broken things and adding things that should be there but aren't.
 - Changed title to credit myself more (planning to add proper credits later)  
 - Mostly removed that horrible "Checking for modifications hurr durr wait 3 seconds" thing  
 - Starting the client now automatically goes to the AQW game instaed of a dead link  
